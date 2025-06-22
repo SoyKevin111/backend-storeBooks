@@ -1,8 +1,11 @@
 package com.example.strorebooks.user.infraestructure.adapter.out.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.*;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "\"user\"")
@@ -18,34 +21,39 @@ public class User {
    Long id;
 
    @Column(nullable = false)
-   @NotBlank(message = "name not null or empty")
+   @NotNull(message = "name not null")
    String name;
 
    @Column(nullable = false)
-   @NotBlank(message = "lastname not null or empty")
+   @NotNull(message = "lastname not null")
    String lastname;
 
+   @Column(nullable = false, unique = true)
+   @NotNull(message = "username not null")
+   String username;
+
    @Column(nullable = false)
-   @NotBlank(message = "phone not null or empty")
+   @NotNull(message = "phone not null")
    String phone;
 
    @Column(nullable = false)
-   @NotBlank(message = "address not null or empty")
+   @NotNull(message = "address not null")
    String address;
 
    @Column(nullable = false)
-   @NotBlank(message = "dateOfBirth not null or empty")
-   String dateOfBirth;
+   @NotNull(message = "dateOfBirth not null")
+   @Past(message = "dateOfBirth must be in the past")
+   LocalDate dateOfBirth;
 
    @Column(nullable = false, unique = true)
-   @NotBlank(message = "identificationNumber not null or empty")
+   @NotNull(message = "identificationNumber not null")
    String identificationNumber;
 
-   @Column(nullable = false, unique = true)
-   @NotBlank(message = "state not null or empty")
-   String state;
+   @Column( name = "state_name", nullable = false)
+   @Enumerated(EnumType.STRING)
+   State state;
 
-   @ManyToOne(cascade = CascadeType.REFRESH)
-   @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
+   @Column(name = "role_name", nullable = false)
+   @Enumerated(EnumType.STRING)
    Role role;
 }

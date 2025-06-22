@@ -1,14 +1,18 @@
 package com.example.strorebooks.user.application;
 
+import com.example.strorebooks.handlerError.application.ServerInternalError;
 import com.example.strorebooks.user.domain.ports.in.IUserService;
 import com.example.strorebooks.user.domain.ports.out.IUserRepository;
 import com.example.strorebooks.user.infraestructure.adapter.out.model.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
+@Slf4j
+@Service
 public class UserService implements IUserService {
 
    @Autowired
@@ -17,18 +21,23 @@ public class UserService implements IUserService {
    @Override
    public User create(User user) {
       try {
+         user.setId(null); //ID es null para nuevos usuarios
          return userRepository.save(user);
       } catch (Exception e) {
-         throw new RuntimeException("Error creating user");
+         log.error("Error creating user: {}", e.getMessage());
+         throw new ServerInternalError("Error creating user");
       }
    }
 
    @Override
    public User update(User user) {
       try {
+         if (user.getId() == null) {
+            throw new ServerInternalError("User ID must not be null for update");
+         }
          return userRepository.save(user);
       } catch (Exception e) {
-         throw new RuntimeException("Error updating user");
+         throw new ServerInternalError("Error updating user");
       }
    }
 
@@ -37,7 +46,7 @@ public class UserService implements IUserService {
       try {
          userRepository.deleteById(id);
       } catch (Exception e) {
-         throw new RuntimeException("Error deleting user");
+         throw new ServerInternalError("Error deleting user");
       }
    }
 
@@ -45,9 +54,9 @@ public class UserService implements IUserService {
    public User findById(Long id) {
       try {
          return userRepository.findById(id)
-               .orElseThrow(() -> new RuntimeException("User not found"));
+            .orElseThrow(() -> new ServerInternalError("User not found"));
       } catch (Exception e) {
-         throw new RuntimeException("Error finding user by id");
+         throw new ServerInternalError("Error finding user by id");
       }
    }
 
@@ -56,7 +65,7 @@ public class UserService implements IUserService {
       try {
          return userRepository.findAll();
       } catch (Exception e) {
-         throw new RuntimeException("Error finding all users");
+         throw new ServerInternalError("Error finding all users");
       }
    }
 }

@@ -4,14 +4,13 @@ package com.example.strorebooks.user.infraestructure.adapter.in.rest;
 import com.example.strorebooks.user.application.UserMapping;
 import com.example.strorebooks.user.domain.ports.in.IUserService;
 import com.example.strorebooks.user.infraestructure.adapter.in.dto.UserRequest;
-import com.example.strorebooks.user.infraestructure.adapter.out.model.User;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/storebooks/users")
 public class UserController {
 
    @Autowired
@@ -20,19 +19,18 @@ public class UserController {
    @Autowired
    private UserMapping userMapping;
 
-   @PostMapping()
-   public ResponseEntity<?> createUser(@RequestBody UserRequest userRequest) {
-      User user = userMapping.userCreateMapping(userRequest);
-      return ResponseEntity.ok(userService.create(user));
+   @PostMapping
+   public ResponseEntity<?> createUser(@RequestBody @Valid UserRequest userRequest) {
+      return ResponseEntity.ok(userService.create(this.userMapping.saveUserMapping(userRequest)));
    }
 
-   @PostMapping("/update")
-   public ResponseEntity<?> updateUser(@RequestBody User user) {
-      return ResponseEntity.ok(userService.update(user));
+   @PutMapping
+   public ResponseEntity<?> updateUser(@RequestBody @Valid UserRequest userRequest) {
+      return ResponseEntity.ok(userService.update(userMapping.saveUserMapping(userRequest)));
    }
 
-   @PostMapping("/delete")
-   public ResponseEntity<?> deleteUser(@RequestBody Long id) {
+   @DeleteMapping
+   public ResponseEntity<?> deleteUser(@PathVariable Long id) {
       userService.delete(id);
       return ResponseEntity.ok().build();
    }
