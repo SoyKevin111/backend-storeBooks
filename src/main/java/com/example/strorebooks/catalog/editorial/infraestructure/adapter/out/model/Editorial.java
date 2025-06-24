@@ -1,6 +1,6 @@
 package com.example.strorebooks.catalog.editorial.infraestructure.adapter.out.model;
 
-import com.example.strorebooks.user.infraestructure.adapter.out.model.State;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -34,9 +34,11 @@ public class Editorial {
    @NotNull(message = "email not null")
     String email;
 
-   @Column( name = "state_name", nullable = false)
+   @Column(name = "state_name", nullable = false)
    @Enumerated(EnumType.STRING)
    State state;
+
+
 
 
 
