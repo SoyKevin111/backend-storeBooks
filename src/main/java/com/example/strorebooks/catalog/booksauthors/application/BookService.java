@@ -1,9 +1,7 @@
 package com.example.strorebooks.catalog.booksauthors.application;
 
-import com.example.strorebooks.catalog.booksauthors.domain.ports.in.IAuthorService;
 import com.example.strorebooks.catalog.booksauthors.domain.ports.in.IBookService;
 import com.example.strorebooks.catalog.booksauthors.domain.ports.out.IBookRepository;
-import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.model.Author;
 import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.model.Book;
 import com.example.strorebooks.handlerError.application.ServerInternalError;
 import lombok.extern.slf4j.Slf4j;

@@ -24,13 +24,13 @@ public class Book {
 
    @Column(name = "isbn", nullable = false, unique = true)
    @NotNull(message = "ISBN not null")
-   String ISBN;
+   String isbn;
 
    @Column(name = "title")
    @NotNull(message = "title not null")
    String title;
 
-   @Column(name = "datepublication", nullable = false)
+   @Column(name = "datePublication", nullable = false)
    @NotNull(message = "datePublication not null")
    String datePublication;
 
@@ -58,4 +58,8 @@ public class Book {
    )
    @JsonManagedReference
    Set<Author> authors = new HashSet<>();
+
+   @ManyToOne
+   @JoinColumn(name = "editorial_id", nullable = false)
+   private Editorial editorial;
 }

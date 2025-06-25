@@ -6,10 +6,7 @@ import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.in.d
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/storebooks/authors")
@@ -25,5 +22,23 @@ public class AuthorController {
         return ResponseEntity.ok(authorService.create(this.authorMapping.saveAuthorMapping(authorRequest)));
     }
 
+    @PutMapping
+    public ResponseEntity<?> updateAuthor(@RequestBody @Valid AuthorRequest authorRequest) {
+        return ResponseEntity.ok(authorService.update(authorMapping.saveAuthorMapping(authorRequest)));
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteAuthor(@PathVariable Long id) {
+        authorService.delete(id);
+        return ResponseEntity.ok().build();
+    }
+    @GetMapping
+    public ResponseEntity<?> findAllAuthors() {
+        return ResponseEntity.ok(authorService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findAuthorById(@PathVariable Long id) {
+        return ResponseEntity.ok(authorService.findById(id));
+    }
 }
