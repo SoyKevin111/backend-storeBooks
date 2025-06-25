@@ -1,10 +1,9 @@
 package com.example.strorebooks.catalog.editorial.infraestructure.adapter.out.repositories;
 
 import com.example.strorebooks.catalog.editorial.domain.ports.out.IEditorialRepository;
-import com.example.strorebooks.catalog.editorial.infraestructure.adapter.out.IEditorialRepositoruPostgresql;
+import com.example.strorebooks.catalog.editorial.infraestructure.adapter.out.IEditorialRepositoryPostgresql;
 import com.example.strorebooks.catalog.editorial.infraestructure.adapter.out.model.Editorial;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.Optional;
 public class EditorialRepository implements IEditorialRepository {
 
     @Autowired
-    private IEditorialRepositoruPostgresql repository;
+    private IEditorialRepositoryPostgresql repository;
 
     @Override
     public Editorial save(Editorial editorial) {
