@@ -1,5 +1,6 @@
 package com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.model;
 
+import com.example.strorebooks.catalog.editorial.infraestructure.adapter.out.model.Editorial;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

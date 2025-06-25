@@ -47,4 +47,7 @@ public class BookRequest {
 
     @NotNull(message = "Authors must not be null")
     List<Long> authors;
+
+    @NotNull(message = "Editorial ID must not be null")
+    Long editorialId;
 }
