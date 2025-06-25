@@ -1,9 +1,9 @@
 package com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.aspectj.bridge.IMessage;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,9 +22,33 @@ public class Book {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    Long id;
 
+   @Column(name = "isbn", nullable = false, unique = true)
+   @NotNull(message = "ISBN not null")
+   String ISBN;
+
    @Column(name = "title")
    @NotNull(message = "title not null")
    String title;
+
+   @Column(name = "datepublication", nullable = false)
+   @NotNull(message = "datePublication not null")
+   String datePublication;
+
+   @Column(name = "price", nullable = false)
+   @NotNull(message = "price not null")
+   Double price;
+
+   @Column(name = "stock", nullable = false)
+   @NotNull(message = "stock not null")
+   Integer stock;
+
+   @Column(name = "coverURL", nullable = false)
+   @NotNull(message = "coverImage not null")
+   String coverURL;
+
+   @Column(name = "category_name", nullable = false)
+   @Enumerated(EnumType.STRING)
+   Category category;
 
    @ManyToMany
    @JoinTable(
@@ -32,5 +56,6 @@ public class Book {
       joinColumns = @JoinColumn(name = "book_id"),
       inverseJoinColumns = @JoinColumn(name = "author_id")
    )
+   @JsonManagedReference
    Set<Author> authors = new HashSet<>();
 }
