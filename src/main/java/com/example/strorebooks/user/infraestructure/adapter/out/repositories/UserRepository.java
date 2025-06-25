@@ -1,7 +1,7 @@
 package com.example.strorebooks.user.infraestructure.adapter.out.repositories;
 
 import com.example.strorebooks.user.domain.ports.out.IUserRepository;
-import com.example.strorebooks.user.infraestructure.adapter.out.IUserRepositoruPostgresql;
+import com.example.strorebooks.user.infraestructure.adapter.out.IUserRepositoryPostgresql;
 import com.example.strorebooks.user.infraestructure.adapter.out.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,7 +13,7 @@ import java.util.Optional;
 public class UserRepository implements IUserRepository {
 
    @Autowired
-   private IUserRepositoruPostgresql repository;
+   private IUserRepositoryPostgresql repository;
 
    @Override
    public User save(User user) {
