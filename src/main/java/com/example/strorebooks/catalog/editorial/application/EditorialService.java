@@ -13,8 +13,7 @@ import java.util.List;
 @Service
 
 public class EditorialService implements IEditorialService {
-    // Aquí irían las implementaciones de los métodos definidos en IEditorialService
-    // Por ejemplo, podrías inyectar un repositorio y usarlo para manejar las operaciones CRUD
+
     @Autowired
     IEditorialRepository editorialRepository;
 

@@ -23,8 +23,7 @@ public class Book {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    Long id;
 
-   @Column(name = "isbn", nullable = false, unique = true)
-   @NotNull(message = "ISBN not null")
+   //si puede ser null, despues de crear el objeto se modificara el isbn+id
    String isbn;
 
    @Column(name = "title")

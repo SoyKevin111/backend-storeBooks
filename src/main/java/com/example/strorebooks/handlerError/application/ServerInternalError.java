@@ -14,8 +14,9 @@ public class ServerInternalError extends RuntimeException{
    public ServerInternalError(String message) {
       this.message = message;
    }
-   public ServerInternalError(String message, String error) {
-      this.message = message;
+   public ServerInternalError(String error, String message) {
       this.error = error;
+      this.message = message;
+
    }
 }

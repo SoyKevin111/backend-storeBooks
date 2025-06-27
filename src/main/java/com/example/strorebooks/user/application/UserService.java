@@ -6,7 +6,6 @@ import com.example.strorebooks.user.domain.ports.out.IUserRepository;
 import com.example.strorebooks.user.infraestructure.adapter.out.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,6 +36,7 @@ public class UserService implements IUserService {
          }
          return userRepository.save(user);
       } catch (Exception e) {
+         log.error("Error updating user: {}", e.getMessage());
          throw new ServerInternalError("Error updating user");
       }
    }
@@ -46,6 +46,7 @@ public class UserService implements IUserService {
       try {
          userRepository.deleteById(id);
       } catch (Exception e) {
+         log.error("Error deleting user: {}", e.getMessage());
          throw new ServerInternalError("Error deleting user");
       }
    }
@@ -56,6 +57,7 @@ public class UserService implements IUserService {
          return userRepository.findById(id)
             .orElseThrow(() -> new ServerInternalError("User not found"));
       } catch (Exception e) {
+         log.error("Error finding user by id: {}", e.getMessage());
          throw new ServerInternalError("Error finding user by id");
       }
    }
@@ -65,6 +67,7 @@ public class UserService implements IUserService {
       try {
          return userRepository.findAll();
       } catch (Exception e) {
+         log.error("Error finding alls users: {}", e.getMessage());
          throw new ServerInternalError("Error finding all users");
       }
    }

@@ -19,9 +19,7 @@ public class BookRequest {
 
     Long id;
 
-    @NotBlank(message = "ISBN must not be null or empty")
-    @Size(max = 20, message = "ISBN must not exceed 20 characters")
-    String isbn;
+    String isbn; //se definira en el sistema, asi que no pasa nada si no se pasa.
 
     @NotBlank(message = "Title must not be null or empty")
     @Size(max = 50, message = "Title must not exceed 50 characters")
