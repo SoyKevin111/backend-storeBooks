@@ -1,6 +1,6 @@
 package com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.in.rest;
 
-import com.example.strorebooks.catalog.booksauthors.application.AuthorMapping;
+import com.example.strorebooks.catalog.booksauthors.application.mapping.AuthorMapping;
 import com.example.strorebooks.catalog.booksauthors.domain.ports.in.IAuthorService;
 import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.in.dto.AuthorRequest;
 import jakarta.validation.Valid;

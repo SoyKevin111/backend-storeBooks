@@ -1,4 +1,4 @@
-package com.example.strorebooks.catalog.booksauthors.application;
+package com.example.strorebooks.catalog.booksauthors.application.mapping;
 
 import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.in.dto.AuthorRequest;
 import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.model.Author;

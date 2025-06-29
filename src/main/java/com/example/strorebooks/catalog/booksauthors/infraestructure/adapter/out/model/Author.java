@@ -33,7 +33,7 @@ public class Author {
    @NotNull(message = "email not null")
    String email;
 
-   @Column(name = "numberIdentification", nullable = false, unique = true)
+   @Column(name = "number_identification", nullable = false, unique = true)
    @NotNull(message = "numberIdentification not null")
    String numberIdentification;
 

@@ -33,9 +33,8 @@ public class EditorialRequest {
     @Size(max = 50, message = "Email must not exceed 50 characters")
     String email;
 
-
     State state;
-
-
-
 }
+
+
+

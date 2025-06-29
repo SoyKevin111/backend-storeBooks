@@ -1,0 +1,17 @@
+Libros:
+
+{
+    "title": "Clean Code",
+    "description": "A handbook of agile software craftsmanship.",
+    "bestSellers": true,
+    "createdAt": "2010-08-01",
+    "price": 45.99,
+    "stock": 100,
+    "coverURL": "https://example.com/covers/clean-code.jpg",
+    "category": "SCIENCE",
+    "authors": [
+        1,
+        2
+    ],
+    "editorialId": 1
+}

@@ -22,15 +22,15 @@ public class Editorial {
    @NotNull(message= "name not null")
    String name;
 
-   @Column(nullable = false)
+   @Column( name = "phone",nullable = false)
    @NotNull(message = "phone not null")
    String phone;
 
-   @Column(nullable = false)
+   @Column(name = "sitio_web",nullable = false)
    @NotNull(message = "sitio web not null")
    String sitioWeb;
 
-   @Column(nullable = false)
+   @Column(name = "email",nullable = false)
    @NotNull(message = "email not null")
     String email;
 

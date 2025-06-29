@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,6 +26,7 @@ public class Book {
    Long id;
 
    //si puede ser null, despues de crear el objeto se modificara el isbn+id
+   @Column(name = "isbn")
    String isbn;
 
    @Column(name = "title")
@@ -32,11 +35,19 @@ public class Book {
 
    @Column(name = "datePublication", nullable = false)
    @NotNull(message = "datePublication not null")
-   String datePublication;
+   LocalDate createdAt; //yy-mm-dd
+
+   @Column(name = "description", nullable = false)
+   @NotNull(message = "description not null")
+   String description;
+
+   @Column(name = "bestSellers", nullable = false)
+   @NotNull(message = "bestSellers not null")
+   Boolean bestSellers;
 
    @Column(name = "price", nullable = false)
    @NotNull(message = "price not null")
-   Double price;
+   BigDecimal price;
 
    @Column(name = "stock", nullable = false)
    @NotNull(message = "stock not null")
