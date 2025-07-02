@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Builder
 @Getter
 @Setter
-public class UserRequest {
+public class CustomerRequest {
 
    Long id;
 
@@ -49,6 +49,4 @@ public class UserRequest {
    String identificationNumber;
 
    State state;
-
-   Role role;
 }

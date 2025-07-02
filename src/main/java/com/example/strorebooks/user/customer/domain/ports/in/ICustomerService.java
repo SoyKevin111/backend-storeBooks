@@ -4,7 +4,7 @@ import com.example.strorebooks.user.customer.infraestructure.adapter.out.model.C
 
 import java.util.List;
 
-public interface IUserService {
+public interface ICustomerService {
 
    Customer create(Customer customer);
    Customer update(Customer customer);

@@ -5,7 +5,7 @@ import com.example.strorebooks.user.customer.infraestructure.adapter.out.model.C
 import java.util.List;
 import java.util.Optional;
 
-public interface IUserRepository {
+public interface ICustomerRepository {
    Customer save(Customer customer);
    void deleteById(Long id);
    Optional<Customer> findById(Long id);

@@ -1,6 +1,6 @@
 package com.example.strorebooks.user.customer.application;
 
-import com.example.strorebooks.user.customer.infraestructure.adapter.in.dto.UserRequest;
+import com.example.strorebooks.user.customer.infraestructure.adapter.in.dto.CustomerRequest;
 import com.example.strorebooks.user.customer.infraestructure.adapter.out.model.Customer;
 import org.springframework.stereotype.Component;
 
@@ -8,17 +8,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapping {
 
-   //asignar las propiedades de UserRequest a User
-   public Customer saveUserMapping(UserRequest userRequest) {
+   //asignar las propiedades de CustomerRequest a Customer
+   public Customer saveUserMapping(CustomerRequest customerRequest) {
       return Customer.builder()
-         .id(userRequest.getId())
-         .name(userRequest.getName())
-         .lastname(userRequest.getLastname())
-         .phone(userRequest.getPhone())
-         .address(userRequest.getAddress())
-         .dateOfBirth(userRequest.getDateOfBirth())
-         .identificationNumber(userRequest.getIdentificationNumber())
-         .state(userRequest.getState())
+         .id(customerRequest.getId())
+         .name(customerRequest.getName())
+         .lastname(customerRequest.getLastname())
+         .phone(customerRequest.getPhone())
+         .address(customerRequest.getAddress())
+         .dateOfBirth(customerRequest.getDateOfBirth())
+         .identificationNumber(customerRequest.getIdentificationNumber())
+         .state(customerRequest.getState())
          .build();
    }
 
