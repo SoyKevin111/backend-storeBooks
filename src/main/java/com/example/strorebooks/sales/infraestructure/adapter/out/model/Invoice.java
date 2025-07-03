@@ -21,28 +21,28 @@ import java.util.List;
 public class Invoice {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   Long id;
+   private Long id;
 
-   @OneToMany
-   @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-   Customer customer;
+   @ManyToOne
+   @JoinColumn(name = "customer_id", nullable = false)
+   private Customer customer;  // varios invoices pueden ser del mismo customer
 
-   @OneToMany(mappedBy = "invoice", cascade = CascadeType.PERSIST, orphanRemoval = true)
-   private List<InvoiceItemDetail> items = new ArrayList<>();
+   @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
+   private List<InvoiceItem> items = new ArrayList<>(); // lista de ítems
 
-   @NotNull(message = "createdAt must not be null")
+   @NotNull
    @Column(name = "created_at", nullable = false)
    private LocalDateTime createdAt;
 
-   @NotNull(message = "IVA must not be null")
-   @Column(name = "iva", nullable = false, precision = 4, scale = 2) // ej: 0.15
-   private BigDecimal iva = new BigDecimal("0.15");
+   @NotNull
+   @Column(name = "iva", nullable = false, precision = 4, scale = 2)
+   private BigDecimal iva;
 
-   @NotNull(message = "Subtotal must not be null")
-   @Column(name = "subtotal", nullable = false, precision = 10, scale = 2) // ej: 99999999.99
+   @NotNull
+   @Column(name = "subtotal", nullable = false, precision = 10, scale = 2)
    private BigDecimal subtotal;
 
-   @NotNull(message = "Total must not be null")
+   @NotNull
    @Column(name = "total", nullable = false, precision = 10, scale = 2)
    private BigDecimal total;
 

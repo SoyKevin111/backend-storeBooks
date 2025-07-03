@@ -14,26 +14,26 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class InvoiceItemDetail {
+public class InvoiceItem {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   Long id;
-
-   @OneToMany
-   @JoinColumn(name = "book_id", referencedColumnName = "id", nullable = false)
-   Book book;
+   private Long id;
 
    @ManyToOne
-   @JoinColumn(name = "book_id", referencedColumnName = "id", nullable = false)
-   Invoice invoice;
+   @JoinColumn(name = "book_id", nullable = false)
+   private Book book;  // cada ítem tiene un libro asociado
 
-   @Column(nullable = false, name = "quantity")
+   @ManyToOne
+   @JoinColumn(name = "invoice_id", nullable = false)
+   private Invoice invoice; // cada ítem pertenece a una factura
+
+   @Column(nullable = false)
    @NotNull(message = "quantity not null")
-   Integer quantity;
+   private Integer quantity;
 
-   @Column(nullable = false, name = "quantity")
+   @Column(nullable = false, precision = 10, scale = 2)
    @NotNull(message = "subtotal not null")
-   BigDecimal subtotal;
+   private BigDecimal subtotal;
 
 }

@@ -28,10 +28,6 @@ public class CustomerRequest {
    @Size(max = 15, message = "Lastname must not exceed 50 characters")
    String lastname;
 
-   @NotBlank(message = "username must not be null or empty")
-   @Size(max = 15, message = "Username must not exceed 15 characters")
-   String username;
-
    @NotBlank(message = "Phone must not be null or empty")
    @Size(max = 10, message = "Phone must not exceed 10 characters")
    String phone;

@@ -61,7 +61,7 @@ public class BookMapping {
          .collect(Collectors.toSet());
 
       Editorial editorial = editorialRepository.findById(bookUpdateRequest.getEditorialId())
-         .orElseThrow(() -> new ServerInternalError(ErrorType.DB_ERROR.name(), "Editorial not found"));
+         .orElseThrow(() -> new ServerInternalError(ErrorType.DB_ERROR.name(), "Editorial not found with id: "+bookUpdateRequest.getEditorialId()));
 
       Book book = this.bookRepository.findById(id)
          .orElseThrow(() -> new ServerInternalError(ErrorType.DB_ERROR.name(), "Book not found with id: " + id));

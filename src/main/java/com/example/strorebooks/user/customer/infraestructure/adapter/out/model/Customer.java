@@ -1,14 +1,16 @@
 package com.example.strorebooks.user.customer.infraestructure.adapter.out.model;
 
+import com.example.strorebooks.sales.infraestructure.adapter.out.model.Invoice;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
-@Table(name = "\"user\"")
+@Table(name = "customer")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,36 +20,36 @@ public class Customer {
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
-   Long id;
+   private Long id;
 
+   @NotNull
    @Column(nullable = false)
-   @NotNull(message = "name not null")
-   String name;
+   private String name;
 
+   @NotNull
    @Column(nullable = false)
-   @NotNull(message = "lastname not null")
-   String lastname;
+   private String lastname;
 
-
+   @NotNull
    @Column(nullable = false)
-   @NotNull(message = "phone not null")
-   String phone;
+   private String phone;
 
+   @NotNull
    @Column(nullable = false)
-   @NotNull(message = "address not null")
-   String address;
+   private String address;
 
+   @NotNull
+   @Past
    @Column(nullable = false)
-   @NotNull(message = "dateOfBirth not null")
-   @Past(message = "dateOfBirth must be in the past")
-   LocalDate dateOfBirth;
+   private LocalDate dateOfBirth;
 
+   @NotNull
    @Column(nullable = false, unique = true)
-   @NotNull(message = "identification_number not null")
-   String identificationNumber;
+   private String identificationNumber;
 
-   @Column( name = "state_name", nullable = false)
+   @NotNull
    @Enumerated(EnumType.STRING)
-   State state;
+   @Column(name = "state_name", nullable = false)
+   private State state;
 
 }
