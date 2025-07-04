@@ -9,7 +9,7 @@ public interface IInvoiceRepository {
 
     Invoice save(Invoice invoice);
     void deleteById(Long id);
-    List<Invoice> findAll(Invoice invoice);
-    Optional<Invoice> findById(Invoice invoice);
+    List<Invoice> findAll();
+    Optional<Invoice> findById(long id);
 
 }

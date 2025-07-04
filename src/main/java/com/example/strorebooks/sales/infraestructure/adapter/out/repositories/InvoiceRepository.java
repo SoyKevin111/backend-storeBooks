@@ -26,12 +26,12 @@ public class InvoiceRepository implements IInvoiceRepository {
     }
 
     @Override
-    public List<Invoice> findAll(Invoice invoice) {
+    public List<Invoice> findAll() {
         return this.repository.findAll();
     }
 
     @Override
-    public Optional<Invoice> findById(Invoice invoice) {
-        return this.repository.findById(invoice.getId());
+    public Optional<Invoice> findById(long id) {
+        return this.repository.findById(id);
     }
 }
