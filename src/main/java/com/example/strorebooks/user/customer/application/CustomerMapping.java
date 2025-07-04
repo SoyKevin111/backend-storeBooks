@@ -6,10 +6,23 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class UserMapping {
+public class CustomerMapping {
 
    //asignar las propiedades de CustomerRequest a Customer
-   public Customer saveUserMapping(CustomerRequest customerRequest) {
+   public Customer createCustomerMapping(CustomerRequest customerRequest) {
+      return Customer.builder()
+         .id(customerRequest.getId())
+         .name(customerRequest.getName())
+         .lastname(customerRequest.getLastname())
+         .phone(customerRequest.getPhone())
+         .address(customerRequest.getAddress())
+         .dateOfBirth(customerRequest.getDateOfBirth())
+         .identificationNumber(customerRequest.getIdentificationNumber())
+         .state(customerRequest.getState())
+         .build();
+   }
+
+   public Customer updateCustomerMapping(CustomerRequest customerRequest, long id) {
       return Customer.builder()
          .id(customerRequest.getId())
          .name(customerRequest.getName())
