@@ -17,7 +17,6 @@ public class CustomerMapping {
    //asignar las propiedades de CustomerRequest a Customer
    public Customer createCustomerMapping(CustomerRequest customerRequest) {
       return Customer.builder()
-         .id(customerRequest.getId())
          .name(customerRequest.getName())
          .lastname(customerRequest.getLastname())
          .phone(customerRequest.getPhone())

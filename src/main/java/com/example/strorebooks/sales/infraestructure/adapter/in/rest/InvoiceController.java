@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/storebooks/invoices")
 public class InvoiceController {
-
+    /*
     @Autowired
     private IInvoiceService invoiceService;
 
@@ -43,6 +43,6 @@ public class InvoiceController {
     public ResponseEntity<?> findInvoiceById(@PathVariable Long id) {
         return ResponseEntity.ok(invoiceService.findById(id));
     }
-
+*/
 
 }
