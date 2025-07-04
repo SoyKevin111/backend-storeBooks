@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/storebooks/users")
+@RequestMapping("/storebooks/customers")
 public class CustomerController {
 
    @Autowired
