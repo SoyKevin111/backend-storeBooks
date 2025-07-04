@@ -22,7 +22,7 @@ public class InvoiceController {
         return ResponseEntity.ok(invoiceService.create(this.invoiceMapping.saveInvoiceMapping(invoiceRequest)));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateInvoice(@RequestBody @Valid InvoiceRequest invoiceRequest) {
         return ResponseEntity.ok(invoiceService.update(invoiceMapping.saveInvoiceMapping(invoiceRequest)));
     }

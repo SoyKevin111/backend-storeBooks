@@ -20,11 +20,12 @@ import java.util.List;
 @Setter
 
 public class InvoiceRequest {
+    @NotNull(message = "Invoice items must not be null")
     @NotBlank(message = "Customer must not be null or empty")
     @Size(max = 50, message = "Customer name must not exceed 50 characters")
     String customer;
-    @NotBlank(message = "Address must not be null or empty")
-    List<InvoiceItem> items;
+
+    @NotNull(message = "Total amount must not be null")
     @NotBlank(message = "Address must not be null or empty")
     LocalDateTime createdAt;
 }
