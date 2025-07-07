@@ -19,8 +19,6 @@ import java.time.LocalDate;
 @Setter
 public class CustomerRequest {
 
-   Long id;
-
    @NotBlank(message = "Name must not be null or empty")
    @Size(max = 30, message = "Name must not exceed 30 characters")
    String name;
