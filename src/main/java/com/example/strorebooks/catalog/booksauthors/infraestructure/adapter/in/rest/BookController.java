@@ -2,8 +2,7 @@ package com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.in.
 
 import com.example.strorebooks.catalog.booksauthors.application.mapping.BookMapping;
 import com.example.strorebooks.catalog.booksauthors.domain.ports.in.IBookService;
-import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.in.dto.BookCreateRequest;
-import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.in.dto.BookUpdateRequest;
+import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.in.dto.BookRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +20,13 @@ public class BookController {
    private BookMapping bookMapping;
 
    @PostMapping
-   public ResponseEntity<?> createBook(@RequestBody @Valid BookCreateRequest bookCreateRequest) {
-      return ResponseEntity.ok(bookService.create(this.bookMapping.createBookMapping(bookCreateRequest)));
+   public ResponseEntity<?> createBook(@RequestBody @Valid BookRequest bookRequest) {
+      return ResponseEntity.ok(bookService.create(this.bookMapping.createBookMapping(bookRequest)));
    }
 
    @PutMapping("/{id}")
-   public ResponseEntity<?> updateBook(@RequestBody @Valid BookUpdateRequest bookCreateRequest, @PathVariable Long id) {
-      return ResponseEntity.ok(bookService.update(bookMapping.updateBookMapping(bookCreateRequest, id)));
+   public ResponseEntity<?> updateBook(@RequestBody @Valid BookRequest bookRequest, @PathVariable Long id) {
+      return ResponseEntity.ok(bookService.update(bookMapping.updateBookMapping(bookRequest, id)));
    }
 
    @DeleteMapping("/{id}")

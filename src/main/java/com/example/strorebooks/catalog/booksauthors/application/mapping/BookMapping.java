@@ -1,7 +1,6 @@
 package com.example.strorebooks.catalog.booksauthors.application.mapping;
 
-import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.in.dto.BookCreateRequest;
-import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.in.dto.BookUpdateRequest;
+import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.in.dto.BookRequest;
 import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.model.Author;
 import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.model.Book;
 
@@ -29,57 +28,40 @@ public class BookMapping {
    private BookRepository bookRepository;
 
 
-   public Book createBookMapping(BookCreateRequest bookCreateRequest) {
-      Set<Author> authors = bookCreateRequest.getAuthors().stream()
-         .map(authorId -> authorRepository.findById(authorId)
-            .orElseThrow(() -> new ServerInternalError(ErrorType.DB_ERROR.name(), "Author not found with id: " + authorId)))
-         .collect(Collectors.toSet());
-
-      Editorial editorial = editorialRepository.findById(bookCreateRequest.getEditorialId())
-         .orElseThrow(() -> new ServerInternalError(ErrorType.DB_ERROR.name(), "Editorial not found"));
-
-
-      return Book.builder()
-         .title(bookCreateRequest.getTitle())
-         .isbn("")
-         .description(bookCreateRequest.getDescription())
-         .price(bookCreateRequest.getPrice())
-         .stock(bookCreateRequest.getStock())
-         .createdAt(bookCreateRequest.getCreatedAt())
-         .bestSellers(bookCreateRequest.getBestSellers())
-         .coverURL(bookCreateRequest.getCoverURL())
-         .category(bookCreateRequest.getCategory())
-         .editorial(editorial)
-         .authors(authors)
-         .build();
+   public Book createBookMapping(BookRequest bookRequest) {
+      return buildBookFromRequest(bookRequest, null, true);
    }
 
-   public Book updateBookMapping(BookUpdateRequest bookUpdateRequest, Long id) {
-      Set<Author> authors = bookUpdateRequest.getAuthors().stream()
-         .map(authorId -> authorRepository.findById(authorId)
-            .orElseThrow(() -> new ServerInternalError(ErrorType.DB_ERROR.name(), "Author not found with id: " + authorId)))
-         .collect(Collectors.toSet());
-
-      Editorial editorial = editorialRepository.findById(bookUpdateRequest.getEditorialId())
-         .orElseThrow(() -> new ServerInternalError(ErrorType.DB_ERROR.name(), "Editorial not found with id: "+bookUpdateRequest.getEditorialId()));
-
-      Book book = this.bookRepository.findById(id)
+   public Book updateBookMapping(BookRequest bookRequest, Long id) {
+      Book existingBook = bookRepository.findById(id)
          .orElseThrow(() -> new ServerInternalError(ErrorType.DB_ERROR.name(), "Book not found with id: " + id));
+      return buildBookFromRequest(bookRequest, existingBook, false);
+   }
+
+   private Book buildBookFromRequest(BookRequest bookRequest, Book existingBook, boolean isNew) {
+      Set<Author> authors = bookRequest.getAuthors().stream()
+         .map(authorId -> authorRepository.findById(authorId)
+            .orElseThrow(() -> new ServerInternalError(ErrorType.DB_ERROR.name(), "Author not found with id: " + authorId)))
+         .collect(Collectors.toSet());
+
+      Editorial editorial = editorialRepository.findById(bookRequest.getEditorialId())
+         .orElseThrow(() -> new ServerInternalError(ErrorType.DB_ERROR.name(), "Editorial not found with id: " + bookRequest.getEditorialId()));
 
       return Book.builder()
-         .id(book.getId())
-         .isbn(book.getIsbn())
-         .title(bookUpdateRequest.getTitle())
-         .description(bookUpdateRequest.getDescription())
-         .price(bookUpdateRequest.getPrice())
-         .stock(bookUpdateRequest.getStock())
-         .createdAt(book.getCreatedAt())
-         .bestSellers(bookUpdateRequest.getBestSellers())
-         .coverURL(bookUpdateRequest.getCoverURL())
-         .category(bookUpdateRequest.getCategory())
+         .id(isNew ? null : existingBook.getId())
+         .isbn(isNew ? null : existingBook.getIsbn())
+         .title(bookRequest.getTitle())
+         .description(bookRequest.getDescription())
+         .price(bookRequest.getPrice())
+         .stock(bookRequest.getStock())
+         .createdAt(isNew ? bookRequest.getCreatedAt() : existingBook.getCreatedAt())
+         .bestSellers(bookRequest.getBestSellers())
+         .coverURL(bookRequest.getCoverURL())
+         .category(bookRequest.getCategory())
          .editorial(editorial)
          .authors(authors)
          .build();
    }
+
 
 }

@@ -15,7 +15,7 @@ import java.util.List;
 @Builder
 @Getter
 @Setter
-public class BookCreateRequest {
+public class BookRequest {
 
    @NotBlank(message = "Title must not be null or empty")
    @Size(max = 30, message = "Title must not exceed 30 characters")
