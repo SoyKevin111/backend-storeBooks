@@ -30,7 +30,7 @@ public class Editorial {
    @NotNull(message = "sitio web not null")
    String sitioWeb;
 
-   @Column(name = "email",nullable = false)
+   @Column(name = "email",nullable = false, unique = true)
    @NotNull(message = "email not null")
     String email;
 

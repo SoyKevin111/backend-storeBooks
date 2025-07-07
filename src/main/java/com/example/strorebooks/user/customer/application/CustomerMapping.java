@@ -14,7 +14,6 @@ public class CustomerMapping {
    @Autowired
    private CustomerRepository customerRepository;
 
-   //asignar las propiedades de CustomerRequest a Customer
    public Customer createCustomerMapping(CustomerRequest customerRequest) {
       validateIdentificationNumber(customerRequest.getIdentificationNumber());
       return Customer.builder()

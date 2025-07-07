@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/storebooks/editorials")
 public class EditorialController {
 
-    @Autowired
-    private IEditorialService editorialService;
+   @Autowired
+   private IEditorialService editorialService;
 
-    @Autowired
-    private EditorialMapping editorialMapping;
+   @Autowired
+   private EditorialMapping editorialMapping;
 
-    @PostMapping
-    public ResponseEntity<?> createEditorial(@RequestBody @Valid EditorialRequest editorialRequest) {
-        return ResponseEntity.ok(editorialService.create(editorialMapping.saveEditorialMapping(editorialRequest)));
-    }
+   @PostMapping
+   public ResponseEntity<?> createEditorial(@RequestBody @Valid EditorialRequest editorialRequest) {
+      return ResponseEntity.ok(editorialService.create(editorialMapping.createEditorialMapping(editorialRequest)));
+   }
 
-    @PutMapping
-    public ResponseEntity<?> updateEditorial(@RequestBody @Valid EditorialRequest editorialRequest) {
-        return ResponseEntity.ok(editorialService.update(editorialMapping.saveEditorialMapping(editorialRequest)));
-    }
+   @PutMapping("/{id}")
+   public ResponseEntity<?> updateEditorial(@RequestBody @Valid EditorialRequest editorialRequest, @PathVariable Long id) {
+      return ResponseEntity.ok(editorialService.update(editorialMapping.updateEditorialMapping(editorialRequest, id)));
+   }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteEditorial(@PathVariable Long id) {
-        editorialService.delete(id);
-        return ResponseEntity.ok().build();
-    }
+   @DeleteMapping("/{id}")
+   public ResponseEntity<?> deleteEditorial(@PathVariable Long id) {
+      editorialService.delete(id);
+      return ResponseEntity.ok().build();
+   }
 
-    @GetMapping
-    public ResponseEntity<?> findAllEditorials() {
-        return ResponseEntity.ok(editorialService.findAll());
-    }
+   @GetMapping
+   public ResponseEntity<?> findAllEditorials() {
+      return ResponseEntity.ok(editorialService.findAll());
+   }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> findEditorialById(@PathVariable Long id) {
-        return ResponseEntity.ok(editorialService.findById(id));
-    }
+   @GetMapping("/{id}")
+   public ResponseEntity<?> findEditorialById(@PathVariable Long id) {
+      return ResponseEntity.ok(editorialService.findById(id));
+   }
 }
 
 

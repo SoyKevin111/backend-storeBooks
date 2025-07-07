@@ -10,5 +10,6 @@ public interface IEditorialRepository {
     void deleteById(Long id);
     Optional<Editorial> findById(Long id);
     List<Editorial> findAll();
+    boolean existsByEmail(String email);
 }
 

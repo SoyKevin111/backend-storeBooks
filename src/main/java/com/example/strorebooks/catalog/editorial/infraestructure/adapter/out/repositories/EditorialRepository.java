@@ -32,5 +32,10 @@ public class EditorialRepository implements IEditorialRepository {
     public List<Editorial> findAll() { return this.repository.findAll();
     }
 
+    @Override
+    public boolean existsByEmail(String email) {
+        return this.repository.existsByEmail(email);
+    }
+
 
 }

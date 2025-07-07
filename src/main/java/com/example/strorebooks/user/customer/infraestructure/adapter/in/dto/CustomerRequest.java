@@ -28,8 +28,7 @@ public class CustomerRequest {
    String lastname;
 
    @NotBlank(message = "Identification number must not be null or empty")
-   @Size(max = 10, message = "identificationNumber must not exceed 10 characters")
-   @Pattern(regexp = "\\d+", message = "Identification number must contain only digits")
+   @Pattern(regexp = "\\d{10}", message = "IdentificationNUmber must be exactly 10 digits")
    private String identificationNumber;
 
    @NotBlank(message = "Address must not be null or empty")
@@ -41,8 +40,7 @@ public class CustomerRequest {
    LocalDate dateOfBirth;
 
    @NotBlank(message = "Phone must not be null or empty")
-   @Pattern(regexp = "\\d+", message = "Phone must contain only digits")
-   @Size(min = 7, max = 15, message = "Phone must not exceed 15 characters or be less than 7 characters")
+   @Pattern(regexp = "\\d{7,15}", message = "Phone must contain only digits and be between 7 and 15 characters")
    private String phone;
 
    State state;
