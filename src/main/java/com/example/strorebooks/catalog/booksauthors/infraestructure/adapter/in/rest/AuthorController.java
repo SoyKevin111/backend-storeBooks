@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/storebooks/authors")
-public class AuthorController {
+public class  AuthorController {
     @Autowired
     private IAuthorService authorService;
 
