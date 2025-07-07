@@ -10,4 +10,5 @@ public interface ICustomerRepository {
    void deleteById(Long id);
    Optional<Customer> findById(Long id);
    List<Customer> findAll();
+   boolean existsByIdentificationNumber(String identificationNumber);
 }

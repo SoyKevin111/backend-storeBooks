@@ -39,6 +39,9 @@ public class CustomerService implements ICustomerService {
 
    @Override
    public void delete(Long id) {
+      if (customerRepository.findById(id).isEmpty()) {
+         throw new ServerInternalError("Error deleting customer: customer not found");
+      }
       try {
          customerRepository.deleteById(id);
       } catch (Exception e) {

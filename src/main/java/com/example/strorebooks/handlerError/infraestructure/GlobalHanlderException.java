@@ -57,21 +57,31 @@ public class GlobalHanlderException {
          .body(response);
    }
 
-   //Validacion de cualquier ENUM (Role, Status, etc)
+   //Validacion de cualquier ENUM (Role, Status, etc) || Fecha
    @ExceptionHandler(HttpMessageNotReadableException.class)
-   public ResponseEntity<ExceptionErrorResponse> handleInvalidEnum(HttpMessageNotReadableException ex) {
+   public ResponseEntity<ExceptionErrorResponse> handleInvalidFormat(HttpMessageNotReadableException ex) {
       if (ex.getCause() instanceof InvalidFormatException ife) {
-         if (ife.getTargetType().isEnum()) {
+         Class<?> targetType = ife.getTargetType();
+
+         if (targetType.isEnum()) {
             ExceptionErrorResponse response = ExceptionErrorResponse.builder()
                .timestamp(LocalDateTime.now())
                .status(HttpStatus.BAD_REQUEST.value())
                .error("[Enum Type]")
-               .message("Tipo de Enum no válido: " + ife.getValue())
+               .message("Invalid Enum type: " + ife.getValue())
                .build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+         }
 
-            return ResponseEntity
-               .status(HttpStatus.BAD_REQUEST)
-               .body(response);
+         if (targetType.equals(java.time.LocalDate.class)) {
+            ExceptionErrorResponse response = ExceptionErrorResponse.builder()
+               .timestamp(LocalDateTime.now())
+               .status(HttpStatus.BAD_REQUEST.value())
+               .error("[Date Format]")
+               .message("Invalid date format for 'dateOfBirth': " + ife.getValue() +
+                  ". The expected format is yyyy-MM-dd")
+               .build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
          }
       }
       return null;

@@ -34,4 +34,9 @@ public class CustomerRepository implements ICustomerRepository {
    public List<Customer> findAll() {
       return this.repository.findAll();
    }
+
+   @Override
+   public boolean existsByIdentificationNumber(String identificationNumber) {
+      return this.repository.existsByIdentificationNumber(identificationNumber);
+   }
 }

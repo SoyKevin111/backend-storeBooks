@@ -12,10 +12,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomerMapping {
    @Autowired
-    private CustomerRepository customerRepository;
+   private CustomerRepository customerRepository;
 
    //asignar las propiedades de CustomerRequest a Customer
    public Customer createCustomerMapping(CustomerRequest customerRequest) {
+      validateIdentificationNumber(customerRequest.getIdentificationNumber());
       return Customer.builder()
          .name(customerRequest.getName())
          .lastname(customerRequest.getLastname())
@@ -30,7 +31,11 @@ public class CustomerMapping {
    public Customer updateCustomerMapping(CustomerRequest customerRequest, long id) {
 
       Customer customer = customerRepository.findById(id)
-              .orElseThrow(() -> new ServerInternalError(ErrorType.DB_ERROR.name(), "Customer not found with id: " + id));
+         .orElseThrow(() -> new ServerInternalError(ErrorType.DB_ERROR.name(), "Customer not found with id: " + id));
+
+      if (!(customerRequest.getIdentificationNumber().equals(customer.getIdentificationNumber()))) {
+         validateIdentificationNumber(customerRequest.getIdentificationNumber());
+      }
 
       return Customer.builder()
          .id(customer.getId())
@@ -42,6 +47,12 @@ public class CustomerMapping {
          .identificationNumber(customerRequest.getIdentificationNumber())
          .state(customerRequest.getState())
          .build();
+   }
+
+   public void validateIdentificationNumber(String identificationNumber) {
+      if (customerRepository.existsByIdentificationNumber(identificationNumber)) {
+         throw new ServerInternalError(ErrorType.DB_ERROR.name(), "Customer with identification number " + identificationNumber + " already exists");
+      }
    }
 
 

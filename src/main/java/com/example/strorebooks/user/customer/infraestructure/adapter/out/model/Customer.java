@@ -1,13 +1,11 @@
 package com.example.strorebooks.user.customer.infraestructure.adapter.out.model;
 
-import com.example.strorebooks.sales.infraestructure.adapter.out.model.Invoice;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "customer")

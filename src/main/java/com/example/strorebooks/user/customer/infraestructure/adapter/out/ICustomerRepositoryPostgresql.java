@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ICustomerRepositoryPostgresql extends JpaRepository<Customer, Long> {
-
+   boolean existsByIdentificationNumber(String identificationNumber);
 
 }
