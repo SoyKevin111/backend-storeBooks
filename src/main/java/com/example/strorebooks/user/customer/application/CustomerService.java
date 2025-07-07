@@ -20,7 +20,6 @@ public class CustomerService implements ICustomerService {
    @Override
    public Customer create(Customer customer) {
       try {
-         customer.setId(null); //ID es null para nuevos clientes
          return customerRepository.save(customer);
       } catch (Exception e) {
          log.error("Error creating customer: {}", e.getMessage());
@@ -31,9 +30,6 @@ public class CustomerService implements ICustomerService {
    @Override
    public Customer update(Customer customer) {
       try {
-         if (customer.getId() == null) {
-            throw new ServerInternalError("customer ID must not be null for update");
-         }
          return customerRepository.save(customer);
       } catch (Exception e) {
          log.error("Error updating customer: {}", e.getMessage());
