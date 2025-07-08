@@ -23,6 +23,8 @@ public class Invoice {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
+   //numberInvoice, String numberInvoice;
+
    @ManyToOne
    @JoinColumn(name = "customer_id", nullable = false)
    private Customer customer;  // varios invoices pueden ser del mismo customer
@@ -45,5 +47,6 @@ public class Invoice {
    @NotNull
    @Column(name = "total", nullable = false, precision = 10, scale = 2)
    private BigDecimal total;
+
 
 }

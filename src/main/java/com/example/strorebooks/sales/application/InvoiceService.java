@@ -17,26 +17,18 @@ public class InvoiceService implements IInvoiceService {
     private IInvoiceRepository invoiceRepository;
 
     @Override
-    public Invoice create(Invoice invoice) {
+    public Invoice create(Invoice invoicea) {
         try {
-            Invoice invoiceCreated = invoiceRepository.save(invoice);
-            return invoiceRepository.save(invoiceCreated);
+            Invoice invoice = invoiceRepository.save(invoicea);
+            /*
+               String codeInvoice = 'INV-00'+invoice.getId();
+               invoice.setNumberInvoice(codeInvoice);
+               Invoice invoiceCreated = invoiceRepository.save(invoice);
+             */
+            return invoiceRepository.save(invoice);
         } catch (Exception e) {
             log.error("Error creating invoice: {}", e.getMessage());
             throw new ServerInternalError("Error creating invoice");
-        }
-    }
-
-    @Override
-    public Invoice update(Invoice invoice) {
-        try {
-            if (invoice.getId() == null) {
-                throw new ServerInternalError("Invoice ID must not be null for update");
-            }
-            return invoiceRepository.save(invoice);
-        } catch (Exception e) {
-            log.error("Error updating invoice: {}", e.getMessage());
-            throw new ServerInternalError("Error updating invoice");
         }
     }
 

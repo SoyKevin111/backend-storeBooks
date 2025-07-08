@@ -1,6 +1,7 @@
 package com.example.strorebooks.sales.infraestructure.adapter.out.model;
 
 import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.model.Book;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -26,6 +27,7 @@ public class InvoiceItem {
 
    @ManyToOne
    @JoinColumn(name = "invoice_id", nullable = false)
+   @JsonIgnore
    private Invoice invoice; // cada ítem pertenece a una factura
 
    @Column(nullable = false)

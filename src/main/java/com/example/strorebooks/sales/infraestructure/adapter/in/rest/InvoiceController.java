@@ -1,48 +1,27 @@
 package com.example.strorebooks.sales.infraestructure.adapter.in.rest;
 
-import com.example.strorebooks.sales.application.InvoiceMapping;
-import com.example.strorebooks.sales.domain.port.in.IInvoiceService;
-import com.example.strorebooks.sales.infraestructure.adapter.in.dto.InvoiceRequest;
-import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/storebooks/invoices")
 public class InvoiceController {
-    /*
-    @Autowired
-    private IInvoiceService invoiceService;
 
-    @Autowired
-    private InvoiceMapping invoiceMapping;
+   /*
+   @Autwired
+   InvoiceMapping im;
+   InvoiceService is;
+   InvoiceResponseMapping irm;
 
-    @PostMapping
-    public ResponseEntity<?> createInvoice(@RequestBody @Valid InvoiceRequest invoiceRequest) {
-        return ResponseEntity.ok(invoiceService.create(this.invoiceMapping.saveInvoiceMapping(invoiceRequest)));
-    }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateInvoice(@RequestBody @Valid InvoiceRequest invoiceRequest) {
-        return ResponseEntity.ok(invoiceService.update(invoiceMapping.saveInvoiceMapping(invoiceRequest)));
-    }
+     @PostMapping
+     ResponseEntity<InvoiceResponse> createInvoice(@RequestBody InvoiceRequest invoiceRequest) {
+         Invoice invoiceLoaded = is.createInvoice(im.saveMappingInvoiceRequestToInvoice(invoiceRequest)); // mandas no id de factura e item, recibes id factura e item
+         return new ResponseEntity<>(irm.toInvoiceResponse(invoiceLoaded), HttpStatus.CREATED);
+     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteInvoice(@PathVariable Long id) {
-        invoiceService.delete(id);
-        return ResponseEntity.ok().build();
-    }
+     @Get
 
-    @GetMapping
-    public ResponseEntity<?> findAllInvoices() {
-        return ResponseEntity.ok(invoiceService.findAll());
-    }
+    */
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> findInvoiceById(@PathVariable Long id) {
-        return ResponseEntity.ok(invoiceService.findById(id));
-    }
-*/
 
 }

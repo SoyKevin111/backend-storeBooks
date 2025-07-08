@@ -1,4 +1,4 @@
-package com.example.strorebooks.sales.application;
+package com.example.strorebooks.sales.application.calculation;
 
 import com.example.strorebooks.sales.infraestructure.adapter.out.model.Invoice;
 import com.example.strorebooks.sales.infraestructure.adapter.out.model.InvoiceItem;
@@ -13,6 +13,9 @@ public class InvoiceCalculationService {
 
    private static final BigDecimal IVA_RATE = new BigDecimal("0.15");
 
+   public BigDecimal getIvaRate() {
+      return IVA_RATE;
+   }
 
    public BigDecimal calculateSubtotal(List<InvoiceItem> items) {
       return items.stream()

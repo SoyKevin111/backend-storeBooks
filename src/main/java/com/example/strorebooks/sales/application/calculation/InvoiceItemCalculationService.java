@@ -1,4 +1,4 @@
-package com.example.strorebooks.sales.application;
+package com.example.strorebooks.sales.application.calculation;
 
 import com.example.strorebooks.sales.infraestructure.adapter.out.model.InvoiceItem;
 import org.springframework.stereotype.Component;

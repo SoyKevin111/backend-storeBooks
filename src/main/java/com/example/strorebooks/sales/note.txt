@@ -1,14 +1,26 @@
----
-
-Por hacer
-    Repsitorios Factura e item
-    Servicios de Factura e item
-    Request de Factura e item
-    Mapping de Factura e Item
-    Controladores de factura e item
 
 
 
+--Frontend
 
-Hecho
-    servicios para calcular total y subtotal e iva para factura y despues subotal y total para itemFactura
+export class Invoice {
+	numberInvoice:string = '';
+	customer: Customer = {
+	    ...
+	};
+	createdAt: string = '';
+	iva: number = 15;
+	subtotal: number = 0;
+	total: number = 0;
+	items: InvoiceItemDetails[] = [];
+}
+
+export class InvoiceItemDetails {
+	id: number = 0;
+	isbn: string = '';
+	bookName: string = '';
+	priceUnit: number = 0;
+	subtotal: number = 0;
+	quantity: number = 0;
+}
+
