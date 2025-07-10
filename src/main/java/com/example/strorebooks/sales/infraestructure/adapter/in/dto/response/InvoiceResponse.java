@@ -1,5 +1,17 @@
 package com.example.strorebooks.sales.infraestructure.adapter.in.dto.response;
 
+import com.example.strorebooks.user.customer.infraestructure.adapter.out.model.Customer;
+import lombok.*;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class InvoiceResponse {
 
    /*
@@ -17,4 +29,12 @@ public class InvoiceResponse {
 }
 
     */
+    private Long id;
+    private String numberInvoice;
+    private Customer customer;
+    private LocalDateTime createdAt;
+    private BigDecimal iva;
+    private BigDecimal subtotal;
+    private BigDecimal total;
+    private List<InvoiceItemResponse> items;
 }

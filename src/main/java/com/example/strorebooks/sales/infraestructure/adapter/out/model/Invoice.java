@@ -23,7 +23,8 @@ public class Invoice {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
-   //numberInvoice, String numberInvoice;
+   @Column(name = "number_invoice", nullable = true, length = 50)
+   private String numberInvoice;
 
    @ManyToOne
    @JoinColumn(name = "customer_id", nullable = false)

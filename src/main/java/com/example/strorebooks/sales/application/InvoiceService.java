@@ -4,6 +4,7 @@ import com.example.strorebooks.handlerError.application.ServerInternalError;
 import com.example.strorebooks.sales.domain.port.in.IInvoiceService;
 import com.example.strorebooks.sales.domain.port.out.IInvoiceRepository;
 import com.example.strorebooks.sales.infraestructure.adapter.out.model.Invoice;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,16 +17,21 @@ public class InvoiceService implements IInvoiceService {
     @Autowired
     private IInvoiceRepository invoiceRepository;
 
+    @Transactional
     @Override
-    public Invoice create(Invoice invoicea) {
+
+    public Invoice create(Invoice invoice) {
         try {
-            Invoice invoice = invoiceRepository.save(invoicea);
-            /*
-               String codeInvoice = 'INV-00'+invoice.getId();
-               invoice.setNumberInvoice(codeInvoice);
-               Invoice invoiceCreated = invoiceRepository.save(invoice);
-             */
-            return invoiceRepository.save(invoice);
+            // 1. Primero guarda la factura sin numberInvoice para obtener el ID
+            Invoice savedInvoice = invoiceRepository.save(invoice);
+
+            // 2. Generar el número de factura con base en el ID
+            String codeInvoice = "INV-00" + savedInvoice.getId();
+            savedInvoice.setNumberInvoice(codeInvoice);
+
+            // 3. Guardar nuevamente con el número generado
+            return invoiceRepository.save(savedInvoice);
+
         } catch (Exception e) {
             log.error("Error creating invoice: {}", e.getMessage());
             throw new ServerInternalError("Error creating invoice");
