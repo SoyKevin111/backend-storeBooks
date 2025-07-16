@@ -15,3 +15,78 @@ Libros:
     ],
     "editorialId": 1
 }
+
+    "title": "The Silent Patient",
+    "description": "A psychological thriller full of suspense and mystery.",
+    "bestSellers": true,
+    "createdAt": "2019-02-05",
+    "price": 39.99,
+    "stock": 80,
+    "coverURL": "https://example.com/covers/silent-patient.jpg",
+    "category": "THRILLER",
+    "authors": [4, 7],
+    "editorialId": 1
+  },
+  {
+    "title": "Educated",
+    "description": "A memoir about growing up and seeking knowledge against all odds.",
+    "bestSellers": true,
+    "createdAt": "2018-03-20",
+    "price": 35.50,
+    "stock": 45,
+    "coverURL": "https://example.com/covers/educated.jpg",
+    "category": "BIOGRAPHY",
+    "authors": [5, 6],
+    "editorialId": 1
+  },
+  {
+    "title": "Sapiens",
+    "description": "A brief history of humankind from evolution to modern day.",
+    "bestSellers": true,
+    "createdAt": "2014-09-04",
+    "price": 44.00,
+    "stock": 70,
+    "coverURL": "https://example.com/covers/sapiens.jpg",
+    "category": "HISTORY",
+    "authors": [3, 8],
+    "editorialId": 1
+  },
+  {
+    "title": "Atomic Habits",
+    "description": "An easy & proven way to build good habits and break bad ones.",
+    "bestSellers": true,
+    "createdAt": "2018-10-16",
+    "price": 38.25,
+    "stock": 100,
+    "coverURL": "https://example.com/covers/atomic-habits.jpg",
+    "category": "SELF_HELP",
+    "authors": [1, 9],
+    "editorialId": 1
+  },
+  {
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "description": "A young wizard’s journey begins at Hogwarts.",
+    "bestSellers": true,
+    "createdAt": "1997-06-26",
+    "price": 29.99,
+    "stock": 120,
+    "coverURL": "https://example.com/covers/harry-potter1.jpg",
+    "category": "FANTASY",
+    "authors": [2, 10],
+    "editorialId": 1
+  }
+
+
+
+
+
+  Customer:
+  {
+    "name": "Carlos",
+    "lastname": "Martínez",
+    "identificationNumber": "0987654321",
+    "address": "Av. Siempre Viva 123",
+    "dateOfBirth": "1990-04-15",
+    "phone": "0987654321",
+    "state": "ACTIVE"
+  }

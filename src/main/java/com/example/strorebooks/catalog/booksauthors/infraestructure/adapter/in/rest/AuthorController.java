@@ -10,35 +10,37 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/storebooks/authors")
-public class  AuthorController {
-    @Autowired
-    private IAuthorService authorService;
+public class AuthorController {
+   @Autowired
+   private IAuthorService authorService;
 
-     @Autowired
-     private AuthorMapping authorMapping;
+   @Autowired
+   private AuthorMapping authorMapping;
 
-    @PostMapping
-    public ResponseEntity<?> createAuthor(@RequestBody @Valid AuthorRequest authorRequest) {
-        return ResponseEntity.ok(authorService.create(this.authorMapping.saveAuthorMapping(authorRequest)));
-    }
+   @PostMapping
+   public ResponseEntity<?> createAuthor(@RequestBody @Valid AuthorRequest authorRequest) {
+      return ResponseEntity.ok(authorService.create(this.authorMapping.createAuthorMapping(authorRequest)));
+   }
 
-    @PutMapping
-    public ResponseEntity<?> updateAuthor(@RequestBody @Valid AuthorRequest authorRequest) {
-        return ResponseEntity.ok(authorService.update(authorMapping.saveAuthorMapping(authorRequest)));
-    }
+   @PutMapping("/{id}")
+   public ResponseEntity<?> updateAuthor(@RequestBody @Valid AuthorRequest authorRequest, @PathVariable Long id) {
+      authorRequest.setId(id);
+      return ResponseEntity.ok(authorService.update(authorMapping.updateAuthorMapping(authorRequest, id)));
+   }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteAuthor(@PathVariable Long id) {
-        authorService.delete(id);
-        return ResponseEntity.ok().build();
-    }
-    @GetMapping
-    public ResponseEntity<?> findAllAuthors() {
-        return ResponseEntity.ok(authorService.findAll());
-    }
+   @DeleteMapping("/{id}")
+   public ResponseEntity<?> deleteAuthor(@PathVariable Long id) {
+      authorService.delete(id);
+      return ResponseEntity.ok().build();
+   }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> findAuthorById(@PathVariable Long id) {
-        return ResponseEntity.ok(authorService.findById(id));
-    }
+   @GetMapping
+   public ResponseEntity<?> findAllAuthors() {
+      return ResponseEntity.ok(authorService.findAll());
+   }
+
+   @GetMapping("/{id}")
+   public ResponseEntity<?> findAuthorById(@PathVariable Long id) {
+      return ResponseEntity.ok(authorService.findById(id));
+   }
 }

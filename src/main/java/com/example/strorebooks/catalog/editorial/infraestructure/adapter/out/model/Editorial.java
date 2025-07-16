@@ -1,6 +1,7 @@
 package com.example.strorebooks.catalog.editorial.infraestructure.adapter.out.model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -26,6 +27,7 @@ public class Editorial {
    @NotNull(message = "phone not null")
    String phone;
 
+   @JsonProperty("website")
    @Column(name = "sitio_web",nullable = false)
    @NotNull(message = "sitio web not null")
    String sitioWeb;

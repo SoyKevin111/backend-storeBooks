@@ -14,58 +14,53 @@ import java.util.List;
 @Slf4j
 @Service
 public class InvoiceService implements IInvoiceService {
-    @Autowired
-    private IInvoiceRepository invoiceRepository;
+   @Autowired
+   private IInvoiceRepository invoiceRepository;
 
-    @Transactional
-    @Override
+   @Transactional
+   @Override
 
-    public Invoice create(Invoice invoice) {
-        try {
-            // 1. Primero guarda la factura sin numberInvoice para obtener el ID
-            Invoice savedInvoice = invoiceRepository.save(invoice);
+   public Invoice create(Invoice invoice) {
+      try {
+         Invoice savedInvoice = invoiceRepository.save(invoice);
+         String codeInvoice = "INV-00" + savedInvoice.getId();
+         savedInvoice.setNumberInvoice(codeInvoice);
+         return invoiceRepository.save(savedInvoice);
 
-            // 2. Generar el número de factura con base en el ID
-            String codeInvoice = "INV-00" + savedInvoice.getId();
-            savedInvoice.setNumberInvoice(codeInvoice);
+      } catch (Exception e) {
+         log.error("Error creating invoice: {}", e.getMessage());
+         throw new ServerInternalError("Error creating invoice");
+      }
+   }
 
-            // 3. Guardar nuevamente con el número generado
-            return invoiceRepository.save(savedInvoice);
+   @Override
+   public void delete(Long id) {
+      try {
+         invoiceRepository.deleteById(id);
+      } catch (Exception e) {
+         log.error("Error deleting invoice: {}", e.getMessage());
+         throw new ServerInternalError("Error deleting invoice");
+      }
+   }
 
-        } catch (Exception e) {
-            log.error("Error creating invoice: {}", e.getMessage());
-            throw new ServerInternalError("Error creating invoice");
-        }
-    }
+   @Override
+   public Invoice findById(Long id) {
+      try {
+         return invoiceRepository.findById(id)
+            .orElseThrow(() -> new ServerInternalError("Invoice not found"));
+      } catch (Exception e) {
+         log.error("Error finding invoice by ID: {}", e.getMessage());
+         throw new ServerInternalError("Error finding invoice by ID");
+      }
+   }
 
-    @Override
-    public void delete(Long id) {
-        try {
-            invoiceRepository.deleteById(id);
-        } catch (Exception e) {
-            log.error("Error deleting invoice: {}", e.getMessage());
-            throw new ServerInternalError("Error deleting invoice");
-        }
-    }
-
-    @Override
-    public Invoice findById(Long id) {
-        try {
-            return invoiceRepository.findById(id)
-                .orElseThrow(() -> new ServerInternalError("Invoice not found"));
-        } catch (Exception e) {
-            log.error("Error finding invoice by ID: {}", e.getMessage());
-            throw new ServerInternalError("Error finding invoice by ID");
-        }
-    }
-
-    @Override
-    public List<Invoice> findAll() {
-        try {
-            return invoiceRepository.findAll();
-        } catch (Exception e) {
-            log.error("Error finding all invoices: {}", e.getMessage());
-            throw new ServerInternalError("Error finding all invoices");
-        }
-    }
+   @Override
+   public List<Invoice> findAll() {
+      try {
+         return invoiceRepository.findAll();
+      } catch (Exception e) {
+         log.error("Error finding all invoices: {}", e.getMessage());
+         throw new ServerInternalError("Error finding all invoices");
+      }
+   }
 }

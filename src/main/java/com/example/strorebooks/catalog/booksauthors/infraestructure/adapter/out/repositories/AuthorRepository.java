@@ -12,27 +12,32 @@ import java.util.Optional;
 @Repository
 public class AuthorRepository implements IAuthorRepository {
 
-    @Autowired
-    private IAuthorRepositoryPostgresql repository;
+   @Autowired
+   private IAuthorRepositoryPostgresql repository;
 
-    @Override
-    public Author save(Author author) {
-        return this.repository.save(author);
-    }
+   @Override
+   public Author save(Author author) {
+      return this.repository.save(author);
+   }
 
-    @Override
-    public void deleteById(Long id) {
-        this.repository.deleteById(id);
-    }
+   @Override
+   public void deleteById(Long id) {
+      this.repository.deleteById(id);
+   }
 
-    @Override
-    public Optional<Author> findById(Long id) {
-        return this.repository.findById(id);
-    }
+   @Override
+   public Optional<Author> findById(Long id) {
+      return this.repository.findById(id);
+   }
 
-    @Override
-    public List<Author> findAll() {
-        return this.repository.findAll();
-    }
+   @Override
+   public List<Author> findAll() {
+      return this.repository.findAll();
+   }
+
+   @Override
+   public boolean existsByIdentityNumber(String identityNumber) {
+      return this.repository.existsByIdentityNumber(identityNumber);
+   }
 
 }

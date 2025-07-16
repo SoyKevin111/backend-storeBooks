@@ -20,11 +20,6 @@ public class AdministratorRequest {
     @Size(max = 30, message = "Lastname must not exceed 30 characters")
     private String lastname;
 
-    @NotBlank(message = "Identity number must not be null or empty")
-    @Size(max = 10, message = "Identity number must not exceed 10 characters")
-    @Pattern(regexp = "\\d+", message = "Identity number must contain only digits")
-    private String identityNumber;
-
     @NotBlank(message = "Username must not be null or empty")
     @Size(max = 30, message = "Username must not exceed 30 characters")
     private String username;

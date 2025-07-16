@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IAdministratorRepositoryPostgresql extends JpaRepository<Administrator, Long> {
     boolean existsByUsername(String username);
-    boolean existsByIdentityNumber(String identityNumber);
 }

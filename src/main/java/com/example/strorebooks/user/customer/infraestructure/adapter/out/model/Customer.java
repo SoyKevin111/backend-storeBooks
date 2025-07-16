@@ -1,5 +1,6 @@
 package com.example.strorebooks.user.customer.infraestructure.adapter.out.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
@@ -24,6 +25,7 @@ public class Customer {
    @Column(nullable = false)
    private String name;
 
+   @JsonProperty("lastName")
    @NotNull
    @Column(nullable = false)
    private String lastname;
@@ -41,6 +43,7 @@ public class Customer {
    @Column(nullable = false)
    private LocalDate dateOfBirth;
 
+   @JsonProperty("identityNumber")
    @NotNull
    @Column(nullable = false, unique = true)
    private String identificationNumber;

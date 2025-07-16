@@ -26,10 +26,6 @@ public class Administrator {
    @NotNull(message = "lastname cannot be null")
    String lastname;
 
-   @Column(name = "identity_number", nullable = false, unique = true)
-   @NotNull(message = "identity number cannot be null")
-   String identityNumber;
-
    @Column(name = "username", nullable = false, unique = true)
    @NotNull(message = "username cannot be null")
    String username;

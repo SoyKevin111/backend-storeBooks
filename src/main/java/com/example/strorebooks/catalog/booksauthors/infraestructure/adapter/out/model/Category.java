@@ -2,18 +2,12 @@ package com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out
 
 public enum Category {
       FICTION,
-      NON_FICTION,
-      SCIENCE,
       HISTORY,
       FANTASY,
       BIOGRAPHY,
       MYSTERY,
       ROMANCE,
       THRILLER,
-      CHILDREN,
-      YOUNG_ADULT,
-      SELF_HELP,
-      COOKING,
-      TRAVEL,
-      HEALTH
+      HEALTH,
+      ANIME
 }

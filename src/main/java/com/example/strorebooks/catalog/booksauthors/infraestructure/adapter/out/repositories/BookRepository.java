@@ -12,26 +12,31 @@ import java.util.Optional;
 
 @Repository
 public class BookRepository implements IBookRepository {
-    @Autowired
-    private IBookRepositoryPostgresql repository;
+   @Autowired
+   private IBookRepositoryPostgresql repository;
 
-    @Override
-    public Book save(Book book) {
-        return this.repository.save(book);
-    }
+   @Override
+   public Book save(Book book) {
+      return this.repository.save(book);
+   }
 
-    @Override
-    public void deleteById(Long id) {
-        this.repository.deleteById(id);
-    }
+   @Override
+   public void deleteById(Long id) {
+      this.repository.deleteById(id);
+   }
 
-    @Override
-    public Optional<Book> findById(Long id) {
-        return this.repository.findById(id);
-    }
+   @Override
+   public Optional<Book> findById(Long id) {
+      return this.repository.findById(id);
+   }
 
-    @Override
-    public List<Book> findAll() {
-        return this.repository.findAll();
-    }
+   @Override
+   public List<Book> findAll() {
+      return this.repository.findAll();
+   }
+
+   @Override
+   public List<Book> findByEditorialId(Long editorialId) {
+      return this.repository.findByEditorialId(editorialId);
+   }
 }

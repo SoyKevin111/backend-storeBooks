@@ -1,5 +1,8 @@
 package com.example.strorebooks.catalog.editorial.application;
 
+import com.example.strorebooks.catalog.booksauthors.domain.ports.out.IBookRepository;
+import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.IBookRepositoryPostgresql;
+import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.model.Book;
 import com.example.strorebooks.catalog.editorial.infraestructure.adapter.out.model.Editorial;
 import com.example.strorebooks.catalog.editorial.domain.ports.in.IEditorialService;
 import com.example.strorebooks.catalog.editorial.domain.ports.out.IEditorialRepository;
@@ -8,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Slf4j
@@ -17,6 +21,8 @@ public class EditorialService implements IEditorialService {
 
    @Autowired
    IEditorialRepository editorialRepository;
+   @Autowired
+   IBookRepositoryPostgresql bookRepository;
 
    @Override
    public Editorial create(Editorial editorial) {
@@ -42,16 +48,23 @@ public class EditorialService implements IEditorialService {
 
    @Override
    public void delete(Long id) {
-      if (this.editorialRepository.findById(id).isEmpty()) {
-         throw new ServerInternalError("Error deleting editorial: editorial not found");
-      }
       try {
+         Editorial editorial = editorialRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Editorial not found"));
+         List<Book> booksWithEditorial = bookRepository.findByEditorialId(id);
+
+         for (Book book : booksWithEditorial) {
+            book.setEditorial(null); // ← Rompe la FK
+         }
+         bookRepository.saveAll(booksWithEditorial);
          editorialRepository.deleteById(id);
+
       } catch (Exception e) {
          log.error("Error deleting editorial: {}", e.getMessage());
          throw new RuntimeException("Error deleting editorial", e);
       }
    }
+
 
    @Override
    public Editorial findById(Long id) {

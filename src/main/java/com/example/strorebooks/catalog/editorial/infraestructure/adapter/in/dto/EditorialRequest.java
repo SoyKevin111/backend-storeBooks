@@ -1,6 +1,7 @@
 package com.example.strorebooks.catalog.editorial.infraestructure.adapter.in.dto;
 
 import com.example.strorebooks.catalog.editorial.infraestructure.adapter.out.model.State;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class EditorialRequest {
    @Pattern(regexp = "\\d{7,15}", message = "Phone must contain only digits and be between 7 and 15 characters")
    private String phone;
 
+   @JsonProperty("website")
    @NotBlank(message = "Sitio web must not be null or empty")
    @Pattern(
       regexp = "^(https?://)?(www\\.)?[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}(/.*)?$",

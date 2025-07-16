@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IEditorialRepositoryPostgresql extends JpaRepository<Editorial, Long> {
    boolean existsByEmail(String email);
-
 }

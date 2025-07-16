@@ -10,4 +10,6 @@ public interface IBookRepository {
     void deleteById(Long id);
     Optional<Book> findById(Long id);
     List<Book> findAll();
+    List<Book> findByEditorialId(Long editorialId);
+
 }

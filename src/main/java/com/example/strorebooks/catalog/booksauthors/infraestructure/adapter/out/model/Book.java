@@ -35,7 +35,7 @@ public class Book {
 
    @Column(name = "datePublication", nullable = false)
    @NotNull(message = "datePublication not null")
-   LocalDate createdAt; //yy-mm-dd
+   LocalDate dateCreated; //yy-mm-dd
 
    @Column(name = "description", nullable = false)
    @NotNull(message = "description not null")
@@ -43,7 +43,7 @@ public class Book {
 
    @Column(name = "bestSellers", nullable = false)
    @NotNull(message = "bestSellers not null")
-   Boolean bestSellers;
+   Boolean bestSeller;
 
    @Column(name = "price", nullable = false)
    @NotNull(message = "price not null")
@@ -53,8 +53,7 @@ public class Book {
    @NotNull(message = "stock not null")
    Integer stock;
 
-   @Column(name = "coverURL", nullable = false)
-   @NotNull(message = "coverImage not null")
+   @Column(name = "coverURL", nullable = true)
    String coverURL;
 
    @Column(name = "category_name", nullable = false)
@@ -71,6 +70,6 @@ public class Book {
    Set<Author> authors = new HashSet<>();
 
    @ManyToOne
-   @JoinColumn(name = "editorial_id", nullable = false)
+   @JoinColumn(name = "editorial_id")
    private Editorial editorial;
 }

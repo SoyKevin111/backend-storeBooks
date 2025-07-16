@@ -27,7 +27,7 @@ public class Author {
 
    @Column(name = "lastname", nullable = false)
    @NotNull(message = "lastname not null")
-   String lastname;
+   String lastName;
 
    @Column(name = "email", nullable = false)
    @NotNull(message = "email not null")
@@ -35,7 +35,7 @@ public class Author {
 
    @Column(name = "number_identification", nullable = false, unique = true)
    @NotNull(message = "numberIdentification not null")
-   String numberIdentification;
+   String identityNumber;
 
    @Column(name = "state_name", nullable = false)
    @Enumerated(EnumType.STRING)

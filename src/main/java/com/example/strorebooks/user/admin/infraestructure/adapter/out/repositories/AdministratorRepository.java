@@ -40,11 +40,6 @@ public class AdministratorRepository implements IAdministratorRepository {
         return this.repository.existsByUsername(username);
     }
 
-    @Override
-    public boolean existsByIdentityNumber(String identityNumber) {
-        return this.repository.existsByIdentityNumber(identityNumber);
-    }
-
 
 
 }

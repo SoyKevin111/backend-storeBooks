@@ -3,6 +3,7 @@ package com.example.strorebooks.user.customer.infraestructure.adapter.in.dto;
 
 import com.example.strorebooks.user.customer.infraestructure.adapter.out.model.State;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
@@ -23,10 +24,12 @@ public class CustomerRequest {
    @Size(max = 30, message = "Name must not exceed 30 characters")
    String name;
 
+   @JsonProperty("lastName")
    @NotBlank(message = "Lastname must not be null or empty")
    @Size(max = 30, message = "Lastname must not exceed 30 characters")
    String lastname;
 
+   @JsonProperty("identityNumber")
    @NotBlank(message = "Identification number must not be null or empty")
    @Pattern(regexp = "\\d{10}", message = "IdentificationNUmber must be exactly 10 digits")
    private String identificationNumber;

@@ -3,6 +3,7 @@ package com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.in.
 
 import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.model.Category;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -26,11 +27,10 @@ public class BookRequest {
    String description;
 
    @NotNull(message = "bestSeller not null")
-   Boolean bestSellers;
+   Boolean bestSeller;
 
    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-   @Past(message = "createdAt must be in the past")
-   LocalDate createdAt;
+   LocalDate dateCreated;
 
    @NotNull(message = "Price must not be null")
    @Min(value = 1, message = "price must be 1 or greater")
@@ -40,13 +40,11 @@ public class BookRequest {
    @Min(value = 0, message = "Stock must be 0 or greater")
    Integer stock;
 
-   @NotBlank(message = "Cover URL must not be null or empty")
-   @Size(max = 255, message = "Cover URL must not exceed 255 characters")
-   String coverURL;
 
    @NotNull(message = "Category must not be null")
    Category category;
 
+   @JsonProperty("authorsId")
    @NotNull(message = "Authors must not be null")
    List<Long> authors;
 
