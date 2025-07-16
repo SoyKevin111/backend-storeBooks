@@ -2,6 +2,7 @@ package com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out
 
 import com.example.strorebooks.catalog.booksauthors.domain.ports.out.IBookRepository;
 import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.IBookRepositoryPostgresql;
+import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.model.Author;
 import com.example.strorebooks.catalog.booksauthors.infraestructure.adapter.out.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -39,4 +40,10 @@ public class BookRepository implements IBookRepository {
    public List<Book> findByEditorialId(Long editorialId) {
       return this.repository.findByEditorialId(editorialId);
    }
+
+   @Override
+   public List<Author> findAuthorsByBookIsbn(String isbn) {
+      return this.repository.findAuthorsByBookIsbn(isbn);
+   }
+
 }

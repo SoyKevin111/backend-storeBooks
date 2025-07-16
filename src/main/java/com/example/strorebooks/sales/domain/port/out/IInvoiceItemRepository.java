@@ -1,5 +1,6 @@
 package com.example.strorebooks.sales.domain.port.out;
 
+import com.example.strorebooks.sales.domain.port.out.reports.BestSellersByCategory;
 import com.example.strorebooks.sales.infraestructure.adapter.out.model.InvoiceItem;
 
 import java.util.List;
@@ -10,4 +11,5 @@ public interface IInvoiceItemRepository {
    void deleteById(Long id);
    Optional<InvoiceItem> findById(Long invoiceId);
    List<InvoiceItem> findAll();
+   List<BestSellersByCategory> findBestSellersByCategory();
 }
