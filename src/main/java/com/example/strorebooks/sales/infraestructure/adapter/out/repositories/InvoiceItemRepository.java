@@ -1,7 +1,10 @@
 package com.example.strorebooks.sales.infraestructure.adapter.out.repositories;
 
+import com.example.strorebooks.sales.domain.port.out.reports.BestSellers;
 import com.example.strorebooks.sales.domain.port.out.reports.BestSellersByCategory;
 import com.example.strorebooks.sales.domain.port.out.IInvoiceItemRepository;
+import com.example.strorebooks.sales.domain.port.out.reports.LowRotationBooks;
+import com.example.strorebooks.sales.domain.port.out.reports.MonthlySales;
 import com.example.strorebooks.sales.infraestructure.adapter.out.IInvoiceItemRepositoryPostgresql;
 import com.example.strorebooks.sales.infraestructure.adapter.out.model.InvoiceItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +43,20 @@ public class InvoiceItemRepository implements IInvoiceItemRepository {
    public List<BestSellersByCategory> findBestSellersByCategory() {
       return this.repository.findBestSellersByCategory();
    }
+
+   @Override
+   public List<LowRotationBooks> findLowRotationBooks() {
+      return repository.findLowRotationBooks();
+   }
+   @Override
+   public List<MonthlySales> findMonthlySales() {
+      return repository.findMonthlySales();
+   }
+
+   @Override
+   public List<BestSellers> findBestSellers() {
+      return repository.findBestSellers();
+   }
+
+
 }

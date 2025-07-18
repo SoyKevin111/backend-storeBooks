@@ -7,7 +7,7 @@ public interface BestSellersByCategory {
    String getTitle();
    String getEditorial();
    BigDecimal getPrice();
-   BigDecimal getSales();
+   Integer getSales();
    String getCategory();
    Boolean getBestSeller();
 }
