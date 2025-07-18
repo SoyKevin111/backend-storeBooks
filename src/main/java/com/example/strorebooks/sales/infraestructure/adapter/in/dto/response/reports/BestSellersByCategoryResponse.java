@@ -16,7 +16,7 @@ public class BestSellersByCategoryResponse {
    List<String> authors;
    String editorial;
    BigDecimal price;
-   BigDecimal sales;
+   Integer sales;
    String category;
    Boolean bestSeller;
 }

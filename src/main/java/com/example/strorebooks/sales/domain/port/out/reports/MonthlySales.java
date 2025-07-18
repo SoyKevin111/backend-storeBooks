@@ -5,5 +5,5 @@ import java.math.BigDecimal;
 public interface MonthlySales {
    String getMonth();
    BigDecimal getSales();
-   Long getBooksSold();
+   Integer getBooksSold();
 }

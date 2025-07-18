@@ -10,5 +10,5 @@ import lombok.*;
 public class BestSellersResponse {
     private String title;
     private String category;
-    private Long sales;
+    private Integer sales;
 }

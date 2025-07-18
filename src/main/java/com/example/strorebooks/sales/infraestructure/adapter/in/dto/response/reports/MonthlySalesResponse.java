@@ -14,5 +14,5 @@ import java.math.BigDecimal;
 public class MonthlySalesResponse {
     private String month;
     private BigDecimal sales;
-    private Long booksSold;
+    private Integer booksSold;
 }
