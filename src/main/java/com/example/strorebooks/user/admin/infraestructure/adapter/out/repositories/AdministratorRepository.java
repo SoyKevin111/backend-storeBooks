@@ -12,34 +12,38 @@ import java.util.Optional;
 @Repository
 public class AdministratorRepository implements IAdministratorRepository {
 
-    @Autowired
-    private IAdministratorRepositoryPostgresql repository;
+   @Autowired
+   private IAdministratorRepositoryPostgresql repository;
 
-    @Override
-    public Administrator save(Administrator admin) {
-        return this.repository.save(admin);
-    }
+   @Override
+   public Administrator save(Administrator admin) {
+      return this.repository.save(admin);
+   }
 
-    @Override
-    public void deleteById(Long id) {
-        this.repository.deleteById(id);
-    }
+   @Override
+   public void deleteById(Long id) {
+      this.repository.deleteById(id);
+   }
 
-    @Override
-    public Optional<Administrator> findById(Long id) {
-        return this.repository.findById(id);
-    }
+   @Override
+   public Optional<Administrator> findById(Long id) {
+      return this.repository.findById(id);
+   }
 
-    @Override
-    public List<Administrator> findAll() {
-        return repository.findAll();
-    }
+   @Override
+   public List<Administrator> findAll() {
+      return repository.findAll();
+   }
 
-    @Override
-    public boolean existsByUsername(String username) {
-        return this.repository.existsByUsername(username);
-    }
+   @Override
+   public boolean existsByUsername(String username) {
+      return this.repository.existsByUsername(username);
+   }
 
+   @Override
+   public Optional<Administrator> existsByUsernameAndPassword(String username, String password) {
+      return this.repository.findByUsernameAndPassword(username, password);
+   }
 
 
 }

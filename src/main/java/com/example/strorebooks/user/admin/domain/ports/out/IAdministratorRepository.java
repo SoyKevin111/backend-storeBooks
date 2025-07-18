@@ -11,4 +11,5 @@ public interface IAdministratorRepository {
     Optional<Administrator> findById(Long id);
     List<Administrator> findAll();
     boolean existsByUsername(String username);
+    Optional<Administrator> existsByUsernameAndPassword(String username, String password);
 }
