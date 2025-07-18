@@ -40,7 +40,7 @@ public class ReportsController {
    }
 
 
-   @GetMapping("/reports/best-sellers")
+   @GetMapping("/best-sellers")
    public ResponseEntity<?> getBestSellers() {
       return ResponseEntity.ok(reportsMapping.toBestSellersResponse());
    }
