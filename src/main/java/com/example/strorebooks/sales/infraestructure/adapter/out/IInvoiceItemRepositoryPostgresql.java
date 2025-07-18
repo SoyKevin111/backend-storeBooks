@@ -31,40 +31,41 @@ public interface IInvoiceItemRepositoryPostgresql extends JpaRepository<InvoiceI
    List<BestSellersByCategory> findBestSellersByCategory();
 
    @Query("""
-         SELECT
-              b.isbn AS isbn,
-              b.title AS title,
-              COUNT(i.id) AS sales,
-              TO_CHAR(MAX(i.invoice.createdAt), 'YYYY-MM-DD') AS lastSold
-         FROM InvoiceItem i
-         JOIN i.book b
-         GROUP BY b.isbn, b.title
-         HAVING COUNT(i.id) <= 3
-   """)
+            SELECT
+                 b.isbn AS isbn,
+                 b.title AS title,
+                 COUNT(i.id) AS sales,
+                 TO_CHAR(MAX(i.invoice.createdAt), 'YYYY-MM-DD') AS lastSold
+            FROM InvoiceItem i
+            JOIN i.book b
+            GROUP BY b.isbn, b.title
+            HAVING COUNT(i.id) <= 3
+      """)
    List<LowRotationBooks> findLowRotationBooks();
 
    @Query("""
-    SELECT 
-        TO_CHAR(i.invoice.createdAt, 'YYYY-MM-DD') AS month,
-        SUM(b.price * i.quantity) AS sales,
-        SUM(i.quantity) AS booksSold
-    FROM InvoiceItem i
-    JOIN i.book b
-    GROUP BY TO_CHAR(i.invoice.createdAt, 'YYYY-MM-DD')
-    ORDER BY month
-""")
+          SELECT 
+              TO_CHAR(i.invoice.createdAt, 'YYYY-MM-DD') AS month,
+              SUM(b.price * i.quantity) AS sales,
+              SUM(i.quantity) AS booksSold
+          FROM InvoiceItem i
+          JOIN i.book b
+          GROUP BY TO_CHAR(i.invoice.createdAt, 'YYYY-MM-DD')
+          ORDER BY month
+      """)
    List<MonthlySales> findMonthlySales();
 
    @Query("""
-    SELECT 
-        b.title AS title,
-        b.category AS category,
-        SUM(i.quantity) AS sales
-    FROM InvoiceItem i
-    JOIN i.book b
-    GROUP BY b.title, b.category
-    ORDER BY sales DESC
-""")
+          SELECT 
+              b.title AS title,
+              b.category AS category,
+              SUM(i.quantity) AS sales
+          FROM InvoiceItem i
+          JOIN i.book b
+          WHERE b.bestSeller = true
+          GROUP BY b.title, b.category
+          ORDER BY sales DESC
+      """)
    List<BestSellers> findBestSellers();
 
 
