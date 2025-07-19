@@ -45,15 +45,16 @@ public interface IInvoiceItemRepositoryPostgresql extends JpaRepository<InvoiceI
 
    @Query("""
           SELECT 
-              TO_CHAR(i.invoice.createdAt, 'YYYY-MM-DD') AS month,
+              TO_CHAR(i.invoice.createdAt, 'YYYY-MM') AS month,
               SUM(b.price * i.quantity) AS sales,
               SUM(i.quantity) AS booksSold
           FROM InvoiceItem i
           JOIN i.book b
-          GROUP BY TO_CHAR(i.invoice.createdAt, 'YYYY-MM-DD')
+          GROUP BY TO_CHAR(i.invoice.createdAt, 'YYYY-MM')
           ORDER BY month
       """)
    List<MonthlySales> findMonthlySales();
+
 
    @Query("""
           SELECT 

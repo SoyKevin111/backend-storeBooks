@@ -443,223 +443,70 @@ INSERT INTO book_author (book_id, author_id) VALUES
 (54, 17), (54, 18);
 
 
+--FACTURA E ITEMS
 
---FACTURA
+INSERT INTO invoice (iva, subtotal, total, created_at, customer_id, number_invoice)
+VALUES (4.80, 32.00, 36.80, '2024-01-15 09:30:00.123456', 2, 'INV-1001');
 
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total)
-VALUES (5, '2024-03-10 10:30:00', 4.20, 28.00, 32.20);
-
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total)
-VALUES (11, '2024-06-18 14:10:00', 5.10, 34.00, 39.10);
-
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total)
-VALUES (3, '2024-08-25 11:45:00', 3.00, 20.00, 23.00);
-
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total)
-VALUES (8, '2024-10-02 16:20:00', 6.60, 44.00, 50.60);
-
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total)
-VALUES (14, '2024-12-14 09:05:00', 4.95, 33.00, 37.95);
-
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total)
-VALUES (2, '2025-01-22 13:25:00', 3.75, 25.00, 28.75);
-
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total)
-VALUES (6, '2025-03-17 15:50:00', 5.70, 38.00, 43.70);
-
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total)
-VALUES (10, '2025-05-29 10:00:00', 4.65, 31.00, 35.65);
-
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total)
-VALUES (17, '2025-07-12 08:40:00', 2.85, 19.00, 21.85);
-
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total)
-VALUES (20, '2025-09-05 18:15:00', 6.00, 40.00, 46.00);
-
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (4, '2024-02-12 10:00:00', 4.80, 32.00, 36.80);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (9, '2024-03-20 11:15:00', 10.50, 70.00, 80.50);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (2, '2024-04-05 13:30:00', 3.75, 25.00, 28.75);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (15, '2024-05-19 09:00:00', 14.10, 94.00, 108.10);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (6, '2024-06-07 08:45:00', 2.70, 18.00, 20.70);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (8, '2024-07-12 16:20:00', 12.30, 82.00, 94.30);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (12, '2024-08-21 14:10:00', 6.15, 41.00, 47.15);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (1, '2024-09-25 12:00:00', 1.80, 12.00, 13.80);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (19, '2024-10-30 17:40:00', 8.25, 55.00, 63.25);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (14, '2024-11-18 11:50:00', 4.05, 27.00, 31.05);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (7, '2025-01-10 09:30:00', 7.80, 52.00, 59.80);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (5, '2025-02-14 10:25:00', 2.10, 14.00, 16.10);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (18, '2025-03-22 15:10:00', 5.25, 35.00, 40.25);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (11, '2025-04-06 18:45:00', 11.55, 77.00, 88.55);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (3, '2025-05-13 13:35:00', 3.45, 23.00, 26.45);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (10, '2025-06-09 07:50:00', 6.00, 40.00, 46.00);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (20, '2025-07-20 12:15:00', 1.95, 13.00, 14.95);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (16, '2025-08-04 14:55:00', 9.00, 60.00, 69.00);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (13, '2025-09-18 11:00:00', 5.10, 34.00, 39.10);
-INSERT INTO invoice (customer_id, created_at, iva, subtotal, total) VALUES (17, '2025-10-22 16:35:00', 7.35, 49.00, 56.35);
+INSERT INTO invoice_item_detail (quantity, subtotal, book_id, invoice_id)
+VALUES
+(2, 20.00, 1, CURRVAL('invoice_id_seq')),
+(1, 12.00, 3, CURRVAL('invoice_id_seq'));
 
 
+INSERT INTO invoice (iva, subtotal, total, created_at, customer_id, number_invoice)
+VALUES (13.50, 90.00, 103.50, '2024-04-10 14:45:00.654321', 4, 'INV-1002');
+
+INSERT INTO invoice_item_detail (quantity, subtotal, book_id, invoice_id)
+VALUES
+(3, 60.00, 5, CURRVAL('invoice_id_seq')),
+(2, 30.00, 2, CURRVAL('invoice_id_seq'));
 
 
-UPDATE invoice SET number_invoice = '001' WHERE id = 1;
-UPDATE invoice SET number_invoice = '002' WHERE id = 2;
-UPDATE invoice SET number_invoice = '003' WHERE id = 3;
-UPDATE invoice SET number_invoice = '004' WHERE id = 4;
-UPDATE invoice SET number_invoice = '005' WHERE id = 5;
-UPDATE invoice SET number_invoice = '006' WHERE id = 6;
-UPDATE invoice SET number_invoice = '007' WHERE id = 7;
-UPDATE invoice SET number_invoice = '008' WHERE id = 8;
-UPDATE invoice SET number_invoice = '009' WHERE id = 9;
-UPDATE invoice SET number_invoice = '010' WHERE id = 10;
-UPDATE invoice SET number_invoice = '011' WHERE id = 11;
-UPDATE invoice SET number_invoice = '012' WHERE id = 12;
-UPDATE invoice SET number_invoice = '013' WHERE id = 13;
-UPDATE invoice SET number_invoice = '014' WHERE id = 14;
-UPDATE invoice SET number_invoice = '015' WHERE id = 15;
-UPDATE invoice SET number_invoice = '016' WHERE id = 16;
-UPDATE invoice SET number_invoice = '017' WHERE id = 17;
-UPDATE invoice SET number_invoice = '018' WHERE id = 18;
-UPDATE invoice SET number_invoice = '019' WHERE id = 19;
-UPDATE invoice SET number_invoice = '020' WHERE id = 20;
-UPDATE invoice SET number_invoice = '021' WHERE id = 21;
-UPDATE invoice SET number_invoice = '022' WHERE id = 22;
-UPDATE invoice SET number_invoice = '023' WHERE id = 23;
-UPDATE invoice SET number_invoice = '024' WHERE id = 24;
-UPDATE invoice SET number_invoice = '025' WHERE id = 25;
-UPDATE invoice SET number_invoice = '026' WHERE id = 26;
-UPDATE invoice SET number_invoice = '027' WHERE id = 27;
-UPDATE invoice SET number_invoice = '028' WHERE id = 28;
-UPDATE invoice SET number_invoice = '029' WHERE id = 29;
-UPDATE invoice SET number_invoice = '030' WHERE id = 30;
+INSERT INTO invoice (iva, subtotal, total, created_at, customer_id, number_invoice)
+VALUES (13.65, 91.00, 104.65, '2024-07-05 10:20:00.789012', 6, 'INV-1003');
+
+INSERT INTO invoice_item_detail (quantity, subtotal, book_id, invoice_id)
+VALUES
+(2, 36.00, 4, CURRVAL('invoice_id_seq')),
+(1, 30.00, 7, CURRVAL('invoice_id_seq')),
+(1, 25.00, 6, CURRVAL('invoice_id_seq'));
 
 
+INSERT INTO invoice (iva, subtotal, total, created_at, customer_id, number_invoice)
+VALUES (8.63, 57.50, 66.13, '2024-10-28 13:00:00.456789', 8, 'INV-1004');
+
+INSERT INTO invoice_item_detail (quantity, subtotal, book_id, invoice_id)
+VALUES
+(1, 22.50, 8, CURRVAL('invoice_id_seq')),
+(2, 35.00, 9, CURRVAL('invoice_id_seq'));
 
 
---ITEM
+INSERT INTO invoice (iva, subtotal, total, created_at, customer_id, number_invoice)
+VALUES (6.00, 40.00, 46.00, '2024-12-20 17:40:00.987654', 3, 'INV-1005');
 
--- Factura 1
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (1, 3, 2, 18.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (1, 7, 1, 10.00);
-
--- Factura 2
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (2, 12, 2, 20.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (2, 20, 1, 14.00);
-
--- Factura 3
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (3, 5, 2, 20.00);
-
--- Factura 4
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (4, 8, 3, 30.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (4, 9, 1, 14.00);
-
--- Factura 5
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (5, 15, 2, 22.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (5, 25, 1, 11.00);
-
--- Factura 6
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (6, 6, 2, 25.00);
-
--- Factura 7
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (7, 10, 1, 18.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (7, 11, 2, 20.00);
-
--- Factura 8
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (8, 30, 2, 22.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (8, 31, 1, 9.00);
-
--- Factura 9
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (9, 41, 1, 19.00);
-
--- Factura 10
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (10, 50, 2, 30.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (10, 51, 1, 10.00);
+INSERT INTO invoice_item_detail (quantity, subtotal, book_id, invoice_id)
+VALUES
+(1, 15.00, 2, CURRVAL('invoice_id_seq')),
+(1, 25.00, 6, CURRVAL('invoice_id_seq'));
 
 
+INSERT INTO invoice (iva, subtotal, total, created_at, customer_id, number_invoice)
+VALUES (8.25, 55.00, 63.25, '2025-01-08 11:00:00.112233', 7, 'INV-1006');
 
--- Factura 11 (pequeña)
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (11, 5, 2, 18.00);
-
--- Factura 12 (grande)
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (12, 10, 1, 10.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (12, 12, 2, 20.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (12, 14, 1, 10.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (12, 15, 2, 20.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (12, 16, 1, 10.00);
-
--- Factura 13 (pequeña)
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (13, 20, 1, 25.00);
-
--- Factura 14 (grande)
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (14, 22, 1, 12.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (14, 23, 1, 10.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (14, 24, 1, 9.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (14, 25, 1, 11.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (14, 26, 1, 10.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (14, 27, 2, 30.00);
-
--- Factura 15 (pequeña)
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (15, 30, 2, 18.00);
-
--- Factura 16 (grande)
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (16, 33, 1, 10.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (16, 34, 1, 10.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (16, 35, 1, 10.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (16, 36, 1, 10.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (16, 37, 1, 10.00);
-
--- Factura 17 (pequeña)
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (17, 40, 1, 12.00);
-
--- Factura 18 (grande)
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (18, 42, 2, 20.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (18, 43, 2, 20.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (18, 44, 1, 15.00);
-
--- Factura 19 (pequeña)
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (19, 48, 2, 22.00);
-
--- Factura 20 (grande)
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (20, 50, 1, 10.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (20, 51, 1, 8.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (20, 52, 2, 20.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (20, 53, 1, 12.00);
-INSERT INTO invoice_item_detail (invoice_id, book_id, quantity, subtotal) VALUES (20, 54, 1, 10.00);
+INSERT INTO invoice_item_detail (quantity, subtotal, book_id, invoice_id)
+VALUES
+(1, 20.00, 5, CURRVAL('invoice_id_seq')),
+(1, 35.00, 10, CURRVAL('invoice_id_seq'));
 
 
+INSERT INTO invoice (iva, subtotal, total, created_at, customer_id, number_invoice)
+VALUES (8.40, 56.00, 64.40, '2025-02-19 08:30:00.334455', 9, 'INV-1007');
 
-
-
---actualización del numberinvoice xd
-UPDATE invoice SET number_invoice = 'INV-001' WHERE id = 1;
-UPDATE invoice SET number_invoice = 'INV-002' WHERE id = 2;
-UPDATE invoice SET number_invoice = 'INV-003' WHERE id = 3;
-UPDATE invoice SET number_invoice = 'INV-004' WHERE id = 4;
-UPDATE invoice SET number_invoice = 'INV-005' WHERE id = 5;
-UPDATE invoice SET number_invoice = 'INV-006' WHERE id = 6;
-UPDATE invoice SET number_invoice = 'INV-007' WHERE id = 7;
-UPDATE invoice SET number_invoice = 'INV-008' WHERE id = 8;
-UPDATE invoice SET number_invoice = 'INV-009' WHERE id = 9;
-UPDATE invoice SET number_invoice = 'INV-010' WHERE id = 10;
-UPDATE invoice SET number_invoice = 'INV-011' WHERE id = 11;
-UPDATE invoice SET number_invoice = 'INV-012' WHERE id = 12;
-UPDATE invoice SET number_invoice = 'INV-013' WHERE id = 13;
-UPDATE invoice SET number_invoice = 'INV-014' WHERE id = 14;
-UPDATE invoice SET number_invoice = 'INV-015' WHERE id = 15;
-UPDATE invoice SET number_invoice = 'INV-016' WHERE id = 16;
-UPDATE invoice SET number_invoice = 'INV-017' WHERE id = 17;
-UPDATE invoice SET number_invoice = 'INV-018' WHERE id = 18;
-UPDATE invoice SET number_invoice = 'INV-019' WHERE id = 19;
-UPDATE invoice SET number_invoice = 'INV-020' WHERE id = 20;
-UPDATE invoice SET number_invoice = 'INV-021' WHERE id = 21;
-UPDATE invoice SET number_invoice = 'INV-022' WHERE id = 22;
-UPDATE invoice SET number_invoice = 'INV-023' WHERE id = 23;
-UPDATE invoice SET number_invoice = 'INV-024' WHERE id = 24;
-UPDATE invoice SET number_invoice = 'INV-025' WHERE id = 25;
-UPDATE invoice SET number_invoice = 'INV-026' WHERE id = 26;
-UPDATE invoice SET number_invoice = 'INV-027' WHERE id = 27;
-UPDATE invoice SET number_invoice = 'INV-028' WHERE id = 28;
-UPDATE invoice SET number_invoice = 'INV-029' WHERE id = 29;
-UPDATE invoice SET number_invoice = 'INV-030' WHERE id = 30;
-
+INSERT INTO invoice_item_detail (quantity, subtotal, book_id, invoice_id)
+VALUES
+(2, 20.00, 1, CURRVAL('invoice_id_seq')),
+(3, 36.00, 3, CURRVAL('invoice_id_seq'));
 
 
 
