@@ -8,7 +8,7 @@
 
 - **Backend**: Spring Boot (Java 17+)
 - **Base de Datos**: PostgreSQL
-- **Librerías**: JPA, Hibernate, JWT
+- **Librerías**: JPA, Hibernate
 - **Arquitectura**: RESTful APIs
 
 ---
