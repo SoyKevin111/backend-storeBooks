@@ -149,3 +149,5 @@
 #### 🔹 Clientes
 - `POST /storebooks/customers`: Crear cliente
 - `GET /storebooks/customers/{id}`: Obtener cliente por ID  
+
+<img src="src/main/resources/helper/assets/vide-1.gif" width="600" height="350">

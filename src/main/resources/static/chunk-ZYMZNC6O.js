@@ -1,0 +1,1 @@
+import{g as r,h as e}from"./chunk-2T54QLAV.js";var s=e("customers"),a=r(s,t=>t.customers);var o=class{id=0;name="";lastName="";dateOfBirth="";address="";phone="";identityNumber="";state=""};export{a,o as b};

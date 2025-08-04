@@ -1,0 +1,1 @@
+import{a as e,b as o}from"./chunk-2T54QLAV.js";var i=e("[invoice] load invoices"),n=e("[invoice] load invoices success",o()),s=e("[invoice] create invoice",o()),t=e("[invoice] create invoice success",o());export{i as a,n as b,s as c,t as d};
