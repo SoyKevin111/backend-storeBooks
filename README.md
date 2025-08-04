@@ -150,4 +150,7 @@
 - `POST /storebooks/customers`: Crear cliente
 - `GET /storebooks/customers/{id}`: Obtener cliente por ID  
 
-<img src="src/main/resources/helper/assets/vide-1.gif" width="600" height="350">
+
+## 📹 Video Demo (Archivos estaticos insertados en el backend para que funcione como un monorepo)
+<img src="src/main/resources/helper/assets/video-1.gif" width="600" height="350">
+<img src="src/main/resources/helper/assets/video-2.gif" width="600" height="350">
