@@ -4,7 +4,7 @@
 
 ---
 
-## 🚀 Tecnologías Usadas
+## 🚀 Tecnologías Usadas 😊
 
 - **Backend**: Spring Boot (Java 17+)
 - **Base de Datos**: PostgreSQL
