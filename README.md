@@ -151,6 +151,19 @@
 - `GET /storebooks/customers/{id}`: Obtener cliente por ID  
 
 
-## 📹 Video Demo (Archivos estaticos insertados en el backend para que funcione como un monorepo)
-<img src="src/main/resources/helper/assets/video-1.gif" width="600" height="350">
-<img src="src/main/resources/helper/assets/video-2.gif" width="600" height="350">
+## 🌐 Frontend - StoreBooks
+
+🛍️ Aplicación Angular integrada como frontend del sistema **StoreBooks**, servida directamente desde el backend Spring Boot como monorepo.
+
+### ▶️ Ver frontend
+[![Ver Frontend](https://img.shields.io/badge/StoreBooks%20Frontend-%F0%9F%9A%80-blue?style=for-the-badge)](https://github.com/SoyKevin111/frontend-storeBooks)
+
+---
+
+### 📸 Vistas en acción
+
+<img src="src/main/resources/helper/assets/video-1.gif" width="600" height="350" alt="Demo 1">
+<br><br>
+<img src="src/main/resources/helper/assets/video-2.gif" width="600" height="350" alt="Demo 2">
+
+---
