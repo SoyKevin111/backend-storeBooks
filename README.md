@@ -15,11 +15,21 @@
 
 ## ⚙️ Requisitos
 
-- Java 17 o superior
-- Maven
-- PostgreSQL
+- **Java 17** o superior
+- **Maven** instalado
+- **PostgreSQL** en ejecución
 
----
+### 📦 Base de datos inicial
+
+1. Descarga y ejecuta el script SQL:  
+   `src/main/resources/helper/storebooks-database-download.sql`
+2. Asegúrate de tener la base de datos creada y accesible antes de iniciar la app.
+
+### 🔐 Usuario admin (web)
+
+- **Usuario:** `admin`
+- **Contraseña:** `admin1234`
+> Credencial para acceder como administrador en la página web.
 
 
 ## 📌 Entidades
